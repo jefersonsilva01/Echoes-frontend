@@ -1,38 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+  --BK-Main: #202020;
+  --BK-Main-50: #20202080;
+  --BK-Secundary: #363636;
+  --BK-Tertiary: linear-gradient(312deg, #383838 0%, #202020 60%);
+  --Linear-Shadow: linear-gradient(180deg, #ffffff 0%, #2b2d3480 100%);
+  --WT-Main: #ffffff;
+  --WT-Main-50: #ffffff80;
+  --WT-BG: #fafafa;
+  --Active-Main: #fff82d;
+  --Active-Main-Action: linear-gradient(180deg, #fff82d 0%, #e9e8ca 100%);
+  --Action: #8a6afd;
+  --Action-Hover: #9e84ff;
+  --Alert: #e32a42;
+  --Alert-Hover: #f02c46;
+  --BG-Card: #e5e5e5;
+  --BTN: #d9d9d9;
+  --BTN-Hover: #cbcbcb;
+
+  --Poppins: "Poppins", sans-serif;
+
+  --Shadow: 0px 4px 8px #000000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  font-family: var(--Poppins);
+  font-style: normal;
 }
