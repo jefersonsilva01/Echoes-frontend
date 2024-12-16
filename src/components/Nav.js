@@ -55,8 +55,8 @@ const Nav = () => {
           </List>
         </div>
       </NavBar>
-      <Menu open={isMenuOpen} onClick={showHideMenu}>
-        <div id="menu" open={isMenuOpen}>
+      <Menu open={isMenuOpen}>
+        <div id="menu">
           <ul>
             <li>
               <StyledLink to="/">About</StyledLink>

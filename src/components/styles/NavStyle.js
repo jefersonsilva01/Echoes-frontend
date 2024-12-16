@@ -6,15 +6,13 @@ const NavBar = styled.nav`
   display: flex;
   padding: 0 2%;
   height: 72px;
-  ${'' /* max-width: 1440px; */}
+  max-width: 1440px;
+  margin: 0 auto;
   align-items: center;
   justify-content: space-between;
 
   & > #auth-links > ul > svg {
     display: none;
-  };
-
-  & > #auth-links > ul > svg:hover {
     cursor: pointer;
   };
 
@@ -71,6 +69,10 @@ const Search = styled.div`
   width: max-content;
   margin-right: 15px;
 
+  &:has(input:focus) {
+    border: solid 2px var(--Action-Hover);
+  }
+
   & > input {
     width: 250px;
     font-size: 16px;
@@ -82,7 +84,7 @@ const Search = styled.div`
     transition: width 0.3s ease-in-out;
     
     &:focus {
-      width: 438px; 
+      width: 438px;
     }
   };
 
@@ -117,12 +119,13 @@ const Button = styled(Link)`
 const Menu = styled.div`
   background-color: var(--BK-Main-50);
   position: absolute;
-  top: 0;
+  top: 72;
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  visibility: ${props => props.open ? 'visible' : 'hidden'};
-  height: 100%;
+  visibility: hidden;
+  transition: visibility 0.3s ease-in-out;
+  height: calc(100vh - 72px);
 
   & > #menu {
     background-color: var(--WT-Main);
@@ -131,7 +134,7 @@ const Menu = styled.div`
     border-radius: 8px;
     padding: 8px 30px;
     position: relative;
-    top: 72px;
+    top: 0;
     float: right;
     margin-right: 2%;
     overflow: hidden;
@@ -159,6 +162,11 @@ const Menu = styled.div`
   & > #menu > ul > li:last-child {
     display: none;
   };
+
+  // Tablet 
+  @media(max-width: 1040px){
+    visibility: ${props => props.open ? 'visible' : 'hidden'};
+  }
 
   // Mobile
   @media(max-width: 620px) {
