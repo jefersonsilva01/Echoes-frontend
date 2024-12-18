@@ -124,8 +124,9 @@ const Button = styled(Link)`
 
 const Menu = styled.div`
   background-color: var(--BK-Main-50);
-  position: absolute;
-  top: 72px;
+  z-index: 1;
+  position: fixed;
+  top: 57px;
   width: 100%;
   height: 100vh;
   overflow: hidden;
@@ -139,9 +140,9 @@ const Menu = styled.div`
     min-width: 236px;
     border-radius: 8px;
     padding: 8px 30px;
-    position: relative;
-    top: 0;
-    float: right;
+    position: fixed;
+    top: 57px;
+    right: 0;
     margin-right: 2%;
     overflow: hidden;
     height: ${props => props.open ? '200px' : '0px'};
