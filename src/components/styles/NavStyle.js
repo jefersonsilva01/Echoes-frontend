@@ -123,13 +123,13 @@ const Button = styled(Link)`
 
 const Menu = styled.div`
   background-color: var(--BK-Main-50);
-  position: fixed;
+  position: absolute;
   top: 72px;
   width: 100%;
   height: 100vh;
   overflow: hidden;
   visibility: hidden;
-  transition: visibility opacity 0.3s ease-in-out;
+  transition: visibility 0.3s ease-in-out;
   height: calc(100vh - 72px);
 
   & > #menu {
@@ -180,7 +180,7 @@ const Menu = styled.div`
       margin-right: 0%;
       overflow: hidden;
       height: ${props => props.open ? '240px' : '0px'};
-      transition: height 0.3s ease-in-out;
+      visibility: ${props => props.open ? 'visible' : 'hidden'};
     };
 
     & > #menu > ul > li:last-child {
