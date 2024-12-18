@@ -3,27 +3,32 @@ import { Link } from "react-router-dom";
 
 const NavBar = styled.nav`
   background-color: var(--BK-Main);
-  display: flex;
-  padding: 0 2%;
-  height: 72px;
-  max-width: 1440px;
-  margin: 0 auto;
-  align-items: center;
-  justify-content: space-between;
+  height: auto;
+  padding: 8px 16px;
+  position: fixed;
+  width: 100vw;
 
-  & > #auth-links > ul > svg {
-    display: none;
-    cursor: pointer;
-  };
+  & > div {
+    display: flex;
+    max-width: 1440px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
 
-  & > #auth-links > ul > svg:hover > path {
-    fill: var(--Active-Main);
-  };
+    & > #auth-links > ul > svg {
+      display: none;
+      cursor: pointer;
+    };
 
-  // Tablet
-  @media (max-width: 1040px) {
-    & > #auth-links > ul > svg { 
-      display: block;
+    & > #auth-links > ul > svg:hover > path {
+      fill: var(--Active-Main);
+    };
+
+    // Tablet
+    @media (max-width: 1040px) {
+      & > #auth-links > ul > svg { 
+        display: block;
+      }
     }
   }
 `;
@@ -32,7 +37,11 @@ const List = styled.ul`
   list-style: none;
   display: flex;
   align-items: center;
-  height: 100%
+  height: 100%;
+
+  & > #logo {
+    height: 42px;
+  }
 `;
 
 const ListItem = styled.li`
@@ -43,10 +52,6 @@ const ListItem = styled.li`
   @media (max-width: 1040px) {
     display: none;
   }
-`;
-
-const Logo = styled.img`
-  margin-left: 0px;
 `;
 
 const StyledLink = styled(Link)`
@@ -118,13 +123,13 @@ const Button = styled(Link)`
 
 const Menu = styled.div`
   background-color: var(--BK-Main-50);
-  position: absolute;
-  top: 72;
+  position: fixed;
+  top: 72px;
   width: 100%;
   height: 100vh;
   overflow: hidden;
   visibility: hidden;
-  transition: visibility 0.3s ease-in-out;
+  transition: visibility opacity 0.3s ease-in-out;
   height: calc(100vh - 72px);
 
   & > #menu {
@@ -197,4 +202,4 @@ const Menu = styled.div`
   };
 `;
 
-export { NavBar, List, ListItem, StyledLink, Logo, Search, Button, Menu };
+export { NavBar, List, ListItem, StyledLink, Search, Button, Menu };
