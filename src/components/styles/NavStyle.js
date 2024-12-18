@@ -6,6 +6,7 @@ const NavBar = styled.nav`
   height: auto;
   padding: 8px 16px;
   position: fixed;
+  margin-top: 0px;
   width: 100vw;
 
   & > div {
@@ -180,7 +181,6 @@ const Menu = styled.div`
       margin-right: 0%;
       overflow: hidden;
       height: ${props => props.open ? '240px' : '0px'};
-      visibility: ${props => props.open ? 'visible' : 'hidden'};
     };
 
     & > #menu > ul > li:last-child {
