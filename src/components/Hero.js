@@ -8,12 +8,9 @@ const Hero = () => {
       <div>
         <h1>ECHOES</h1>
 
-
         <p>Brazil | São Paulo - SP,  AGO 20-2024 </p>
 
-
         <p>Stories, trends and insights from your at ECHOES //</p>
-
 
         <div id="trend-news-card">
           <div id="trend-news-img">

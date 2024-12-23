@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
 const HeroSection = styled.div`
-  width: 100%;
-  height: auto; 
+  width: 100%; 
   margin: 0 auto;
-  height: calc(100% - 72px);
-  padding-bottom: 84px;
+  height: fit-content;
+  padding-bottom: 32px;
   background-color: var(--BK-Main);
 
   & > div {
@@ -57,8 +56,14 @@ const HeroSection = styled.div`
 
     & > #trend-news-card {
     display: flex;
-    justify-content: space-between;
-    margin: 24px 4% 0;
+    justify-content: space-around;
+    margin: 24px auto 0;
+    padding: 0 32px ;
+
+      // Tablet
+      @media(max-width: 1040px) {
+        flex-direction: column;
+      }
 
       // Mobile
       @media(max-width: 620px) {
@@ -71,6 +76,12 @@ const HeroSection = styled.div`
         margin-right: 32px;
         width: fit-content;
         height: fit-content;
+
+        // Tablet
+        @media(max-width: 1040px) {
+          width: 100%;
+          margin-right: 0px;
+        };
 
         // Mobile
         @media(max-width: 620px) {
@@ -99,7 +110,8 @@ const HeroSection = styled.div`
         // Tablet
         @media(max-width: 1040px) {
           background-image: url("./assets/Trend-news-tablet.png");
-          width: 369px;
+          background-size: cover;
+          width: 100%;
           height: 230px;
         };
 
@@ -116,6 +128,12 @@ const HeroSection = styled.div`
         margin-top: 8px;
         width: 50%;
 
+        // Tablet
+        @media(max-width: 1040px) {
+          margin-top: 16px;
+          width: 100%;
+        };
+
         // Mobile
         @media(max-width: 620px) {
           margin-top: 16px;
@@ -131,7 +149,7 @@ const HeroSection = styled.div`
 
           // Tablet
           @media(max-width: 1040px) {
-            font-size: 12px;
+            font-size: 16px;
             margin-bottom: 16px;
           }
 
@@ -168,7 +186,7 @@ const HeroSection = styled.div`
 
             // Tablet
             @media(max-width: 1040px) {
-              font-size: 12px;
+              font-size: 16px;
               margin-bottom: 16px;
             }
 
@@ -185,8 +203,8 @@ const HeroSection = styled.div`
 
           // Tablet
           @media(max-width: 1040px) {
-            font-size: 12px;
-            margin-bottom: 8px;
+            font-size: 16px;
+            margin-bottom: 18px;
           }
 
           // Mobile
@@ -203,7 +221,7 @@ const HeroSection = styled.div`
 
           // Tablet
           @media(max-width: 1040px) {
-            margin-top: 8px;
+            margin-top: 16px;
           }
 
           // Mobile
