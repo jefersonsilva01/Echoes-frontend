@@ -11,9 +11,11 @@ const FreshSection = styled.section`
     padding: 16px 2% 54px ;
     overflow: hidden;
     position: relative;
+    height: 632px;
 
     &::before,
     &::after {
+      z-index: 1;
       content: '';
       position: absolute;
       width: 2vw;
@@ -40,6 +42,20 @@ const FreshSection = styled.section`
       margin: 0 auto;
       max-width: 1440px;
     };
+
+    & > #carrousel-container {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      margin: 32px auto 0;
+      position: absolute;
+      left: 0;
+      transition: transform: 0.5s ease-in-out;
+
+      & > div {
+        margin: 0 16px;
+      }
+    }
   }
 `;
 

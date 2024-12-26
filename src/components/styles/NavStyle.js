@@ -6,6 +6,7 @@ const NavBar = styled.nav`
   height: auto;
   padding: 8px 16px;
   position: fixed;
+  z-index: 2;
   margin-top: 0px;
   width: 100vw;
 
