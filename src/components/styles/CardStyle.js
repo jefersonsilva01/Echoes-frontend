@@ -5,6 +5,7 @@ const CardContainer = styled.div`
   width: 374px;
   height: 490px;
   border-radius: 8px;
+  border-color: var(--BK-Main-50);
   padding: 16px;
   transition: background-color 0.3s ease-in-out;
 

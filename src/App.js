@@ -1,7 +1,8 @@
 import './App.css';
 import Nav from './components/Nav';
 import Hero from './components/Hero';
-import Carrousel from './components/Carrousel';
+import Fresh from './components/Fresh';
+import Trend from './components/Trend';
 
 // import { Routes, Route } from 'react-router-dom';
 
@@ -10,7 +11,8 @@ function App() {
     <div className="App">
       <Nav />
       <Hero />
-      <Carrousel />
+      <Fresh />
+      <Trend />
     </div>
   );
 }

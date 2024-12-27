@@ -50,7 +50,6 @@ const FreshSection = styled.section`
       margin: 32px auto 0;
       position: absolute;
       left: 0;
-      transition: transform: 0.5s ease-in-out;
 
       & > div {
         margin: 0 16px;
