@@ -3,6 +3,7 @@ import Nav from './components/Nav';
 import Hero from './components/Hero';
 import Fresh from './components/Fresh';
 import Trend from './components/Trend';
+import Start from './components/Start';
 
 // import { Routes, Route } from 'react-router-dom';
 
@@ -13,6 +14,7 @@ function App() {
       <Hero />
       <Fresh />
       <Trend />
+      <Start />
     </div>
   );
 }

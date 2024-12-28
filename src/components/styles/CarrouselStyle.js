@@ -51,8 +51,33 @@ const FreshSection = styled.section`
       position: absolute;
       left: 0;
 
+      // Tablet
+      @media (max-width: 1040px) {
+        width: fit-content;
+      }
+
+      // Mobile
+      @media (max-width: 620px) {
+        width: fit-content;
+      }
+
       & > div {
         margin: 0 16px;
+
+        & > img {
+          width: 100%;
+        }
+
+        // Tablet
+        @media (max-width: 1040px) {
+          width: 350px;
+        }
+
+        // Mobile
+        @media (max-width: 620px) {
+          width: 300px;
+          margin: 0 8px;
+        }
       }
     }
   }

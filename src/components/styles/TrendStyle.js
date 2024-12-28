@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const TrendSection = styled.section`
   width: 100%;
-  height: 100vh;
+  height: auto;
   background-color: var(--WT-Main);
   padding: 32px 0;
 

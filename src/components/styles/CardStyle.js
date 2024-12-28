@@ -3,15 +3,17 @@ import styled from "styled-components";
 const CardContainer = styled.div`
   background-color: var(--WT-Main);
   width: 374px;
-  height: 490px;
+  height: auto;
   border-radius: 8px;
-  border-color: var(--BK-Main-50);
+  border: 1.5px solid var(--BK-Main-50);
   padding: 16px;
-  transition: background-color 0.3s ease-in-out;
+  box-shadow: none;
+  transition: all 0.3s ease-in-out;
 
   &:hover {
     background-color: var(--BG-Card);
     cursor: pointer;
+    box-shadow: 0px 5px 10px 0px var(--BK-Main-50);
   }
 
   & #profile-data {
@@ -30,10 +32,20 @@ const CardContainer = styled.div`
 
   & > img {
     margin-bottom: 12px;
+
+    // Mobile
+    @media (max-width: 620px) {
+      width: 100%;
+    }
   }
 
   & > h4 {
     margin-bottom: 12px;
+
+    // Mobile
+    @media (max-width: 620px) {
+      font-size: 14px;
+    }
   }
 
   & > p {
@@ -42,11 +54,21 @@ const CardContainer = styled.div`
     overflow: hidden;
     font-size: 14px;
     margin-bottom: 16px;
+
+    // Mobile
+    @media (max-width: 620px) {
+      font-size: 14px;
+    }
   }
 
   & > #social-icons {
     display: flex;
     align-items: center;
+
+    // Mobile
+    @media (max-width: 620px) {
+      font-size: 14px;
+    }
 
     & #bookmarks, #heart {
       display: flex;
