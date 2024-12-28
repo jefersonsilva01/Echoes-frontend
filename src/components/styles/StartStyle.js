@@ -6,7 +6,7 @@ const StartSection = styled.div`
   background: var(--BK-Tertiary);
 
   & > #start-container {
-    padding: 32px 8px;
+    padding: 24px 16px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
