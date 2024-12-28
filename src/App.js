@@ -5,6 +5,7 @@ import Fresh from './components/Fresh';
 import Trend from './components/Trend';
 import Start from './components/Start';
 import Footer from './components/Footer';
+import BtnGoToTop from './components/BtnGoToTop';
 
 // import { Routes, Route } from 'react-router-dom';
 
@@ -17,6 +18,7 @@ function App() {
       <Trend />
       <Start />
       <Footer />
+      <BtnGoToTop />
     </div>
   );
 }

@@ -13,7 +13,7 @@ const Nav = () => {
   return (
     <>
       <NavBar>
-        <div>
+        <div id="nav">
           <div id="menulinks">
             <List>
               <Link id="logo" to="/">
