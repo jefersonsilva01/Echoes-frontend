@@ -4,7 +4,7 @@ import { HeroSection } from "./styles/HeroStyle";
 
 const Hero = () => {
   return (
-    <HeroSection>
+    <HeroSection id="hero">
       <div>
         <h1>ECHOES</h1>
 

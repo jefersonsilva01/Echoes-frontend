@@ -3,7 +3,7 @@ import styled from "styled-components";
 const HeroSection = styled.div`
   width: 100%; 
   margin: 0 auto;
-  height: 100%;
+  height: 100vh;
   padding-bottom: 32px;
   background-color: var(--BK-Main);
 

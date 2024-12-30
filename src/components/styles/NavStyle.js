@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 const NavBar = styled.nav`
   background-color: var(--BK-Main);
@@ -56,7 +57,7 @@ const ListItem = styled.li`
   }
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(HashLink)`
   text-decoration: none;
   font-weight: 500;
   color: var(--WT-Main-50);
@@ -133,7 +134,7 @@ const Menu = styled.div`
   overflow: hidden;
   visibility: hidden;
   transition: visibility 0.3s ease-in-out;
-  height: calc(100vh - 72px);
+  ${'' /* height: calc(100vh - 72px); */}
 
   & > #menu {
     background-color: var(--WT-Main);

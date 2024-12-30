@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { HashLink } from "react-router-hash-link";
 import { FooterSection } from "./styles/FooterStyle";
 
 const Footer = () => {
@@ -9,26 +10,26 @@ const Footer = () => {
         <ul>
           <li>
             <img id="rotate" src="./assets/Letters.png" alt="Circle text" />
-            <Link>
+            <HashLink smooth to="#hero">
               ECHOES
-            </Link>
+            </HashLink>
           </li>
           <li>
-            <Link>About</Link>
+            <Link to="/about">About</Link>
           </li>
           <li>
-            <Link>Fresh</Link>
+            <HashLink smooth to="#fresh">Fresh</HashLink>
           </li>
           <li>
-            <Link>Trends</Link>
+            <HashLink smooth to="#trend">Trends</HashLink>
           </li>
           <li>
-            <Link>Sign in</Link>
+            <Link to="/signin">Sign in</Link>
           </li>
           <li>
-            <Link>
+            <a target="blank" href="https://github.com/jefersonsilva01/Echoes-frontend">
               <img src="./assets/Github.png" alt="Github Logo" />
-            </Link>
+            </a>
           </li>
         </ul>
       </div>

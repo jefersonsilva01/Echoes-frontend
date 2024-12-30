@@ -4,7 +4,7 @@ import Card from "./Card";
 
 const Carrousel = () => {
   return (
-    <FreshSection>
+    <FreshSection id="fresh">
       <div id="container">
         <h2>Fresh</h2>
 

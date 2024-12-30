@@ -13,20 +13,20 @@ const Nav = () => {
   return (
     <>
       <NavBar>
-        <div id="nav">
+        <div>
           <div id="menulinks">
             <List>
               <Link id="logo" to="/">
                 <img src="./assets/Logo.png" alt="Logo Echoes" />
               </Link>
               <ListItem>
-                <StyledLink to="/">About</StyledLink>
+                <StyledLink to="/about">About</StyledLink>
               </ListItem>
               <ListItem>
-                <StyledLink to="/">Fresh</StyledLink>
+                <StyledLink smooth to="#fresh">Fresh</StyledLink>
               </ListItem>
               <ListItem>
-                <StyledLink to="/">Trending</StyledLink>
+                <StyledLink smooth to="#trend">Trends</StyledLink>
               </ListItem>
             </List>
           </div>
@@ -39,10 +39,10 @@ const Nav = () => {
                 </svg>
               </Search>
               <ListItem>
-                <StyledLink to="/">Sign In</StyledLink>
+                <StyledLink to="/signin">Sign In</StyledLink>
               </ListItem>
               <ListItem>
-                <Button to="/">Get Started</Button>
+                <Button to="/signup">Get Started</Button>
               </ListItem>
               <svg
 
@@ -61,19 +61,19 @@ const Nav = () => {
         <div id="menu">
           <ul>
             <li>
-              <StyledLink to="/">About</StyledLink>
+              <StyledLink to="/about">About</StyledLink>
             </li>
             <li>
-              <StyledLink to="/">Fresh</StyledLink>
+              <StyledLink smooth to="#fresh">Fresh</StyledLink>
             </li>
             <li>
-              <StyledLink to="/">Popular</StyledLink>
+              <StyledLink smooth to="#trend">Trends</StyledLink>
             </li>
             <li>
-              <StyledLink to="/">Sign In</StyledLink>
+              <StyledLink to="/signin">Sign In</StyledLink>
             </li>
             <li>
-              <StyledLink to="/">Get Started</StyledLink>
+              <StyledLink to="/signup">Get Started</StyledLink>
             </li>
             <li>
               <Search>

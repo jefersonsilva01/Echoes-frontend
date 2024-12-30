@@ -9,7 +9,7 @@ const Start = () => {
         <img src="./assets/Illustration 1.png" alt="Spaceman" />
         <div id="call-to-action">
           <h1>Start Creating</h1>
-          <Link>Get Started</Link>
+          <Link to="/signup">Get Started</Link>
         </div>
         <img src="./assets/Illustration 2.png" alt="Writer" />
       </div>

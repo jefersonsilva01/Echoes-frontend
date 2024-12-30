@@ -5,7 +5,7 @@ import Card from "./Card";
 
 const Trend = () => {
   return (
-    <TrendSection>
+    <TrendSection id="trend">
       <div id="trend-container">
         <h2>Trends</h2>
         <div id="trend-cards">

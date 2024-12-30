@@ -7,12 +7,12 @@ const SignUp = () => {
   return (
     <SignUpArea>
       <div id="signup-container">
-        <Link>
+        <Link to="/">
           <img src="./assets/Logo.png" alt="Echoes Logo" />
         </Link>
 
         <h1>Sign up</h1>
-        <p>Already have an account? <Link href="">sign in</Link></p>
+        <p>Already have an account? <Link to="/signin">sign in</Link></p>
 
         <button>
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
