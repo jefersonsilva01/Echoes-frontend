@@ -3,9 +3,13 @@ import styled from "styled-components";
 const HeroSection = styled.div`
   width: 100%; 
   margin: 0 auto;
-  height: fit-content;
+  height: 100%;
   padding-bottom: 32px;
   background-color: var(--BK-Main);
+
+  @media (max-width: 1040px) {
+    height: fit-content;
+  }
 
   & > div {
     max-width: 1440px;
