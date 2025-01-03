@@ -30,8 +30,8 @@ const SignIn = () => {
           <div></div>
         </div>
 
-        <input type="text" placeholder="E-mail" />
-        <input type="text" placeholder="Password" />
+        <input type="text" maxLength="30" size="25" placeholder="E-mail" />
+        <input type="password" maxLength="30" size="25" placeholder="Password" />
 
         <button id="signin">Sign in</button>
       </div>
