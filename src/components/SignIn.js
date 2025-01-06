@@ -1,9 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
+import AuthService from "./auth/auth-service";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-
 import { SignInArea } from "./styles/SignInStyle";
 
-const SignIn = () => {
+const SignIn = (props) => {
+
+  const [userState, setUserState] = useState({ email: "", password: "" });
+
+  const service = new AuthService();
+
+  const signin = e => {
+    e.preventDefault();
+    let email = userState.email;
+    let password = userState.password;
+
+    service.signin(email, password)
+      .then(response => {
+        setUserState({
+          email: "",
+          password: ""
+        });
+        props.getUser(response)
+      })
+      .catch(error => console.log(error));
+  }
+
+  const handleChange = e => {
+    const { name, value } = e.target;
+    setUserState({ ...userState, [name]: value });
+  }
+
   return (
     <SignInArea>
       <div id="signin-container">
@@ -30,10 +56,32 @@ const SignIn = () => {
           <div></div>
         </div>
 
-        <input type="text" maxLength="30" size="25" placeholder="E-mail" />
-        <input type="password" maxLength="30" size="25" placeholder="Password" />
+        <form onSubmit={signin}>
+          <input
+            type="email"
+            name="email"
+            maxLength="30"
+            size="25"
+            autoComplete="on"
+            required
+            value={userState.email}
+            onChange={handleChange}
+            placeholder="E-mail" />
 
-        <button id="signin">Sign in</button>
+          <input
+            type="password"
+            name="password"
+            maxLength="30"
+            size="25"
+            autoComplete="current-password"
+            required
+            value={userState.password}
+            onChange={handleChange}
+            placeholder="Password" />
+
+          <button type="submit" id="signin">Sign in</button>
+        </form>
+
       </div>
     </SignInArea>
   )
