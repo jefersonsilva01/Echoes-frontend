@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import Nav from './Nav';
 import Hero from './Hero';
@@ -8,7 +8,7 @@ import Start from './Start';
 import Footer from './Footer';
 import BtnGoToTop from './BtnGoToTop';
 
-const Home = () => {
+const Home = (props) => {
   return (
     <>
       <Nav />

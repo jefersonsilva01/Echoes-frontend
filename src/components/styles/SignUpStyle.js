@@ -81,8 +81,22 @@ const SignUpArea = styled.div`
       }
     }
 
-    & > input {
+    & > #error {
+      justify-content: start;
+    }
+
+    & > #error > span {
+      color: var(--Alert);
+      margin-left: 16px;
+    }
+
+    & > #error > svg > path {
+      fill: var(--Alert)
+    }
+
+    & > form > input {
       width: 100%;
+      display: flex;
       margin-bottom: 16px;
       padding: 8px 16px;
       border-style: none;
@@ -92,13 +106,24 @@ const SignUpArea = styled.div`
       font-size: 1em;
     }
 
-    & > #signup {
+    & > form > #signup {
       background-color: var(--BTN);
       color: var(--BK-Main);
+      border-style: none;
+      border-radius: 4px;
+      padding: 8px 0;
+      width: 100%;
+      align-items: center;
+      font-size: 1em;
+      font-weight: 600;
+      transition: background-color 0.3s ease-in-out;
+      margin-bottom: 16px;
+      font-family: var(--Poppins);
 
       &:hover {
         background-color: var(--BTN-Hover);
         box-shadow: var(--Shadow);
+        cursor: pointer;
       }
     }
   }

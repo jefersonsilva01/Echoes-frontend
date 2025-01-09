@@ -81,6 +81,19 @@ const SignInArea = styled.div`
       }
     }
 
+    & > #error {
+      justify-content: start;
+    }
+
+    & > #error > span {
+      color: var(--Alert);
+      margin-left: 16px;
+    }
+
+    & > #error > svg > path {
+      fill: var(--Alert)
+    }
+
     & > form > input {
       width: 100%;
       display: flex;

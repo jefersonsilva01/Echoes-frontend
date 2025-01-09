@@ -10,7 +10,7 @@ class AuthService {
     this.service = service;
   }
 
-  singup = (username, email, password, confirmPassword) => {
+  signup = (username, email, password, confirmPassword) => {
     return this.service.post("/auth/signup", { username, email, password, confirmPassword })
       .then(response => response.data);
   }
@@ -19,6 +19,11 @@ class AuthService {
     return this.service.post("/auth/signin", { email, password })
       .then(response => response.data);
   }
+
+  google = () => {
+    window.location.href = "http://localhost:5000/auth/google";
+    // window.location.href = `${process.env.SERVER_URL}/auth/google`;
+  };
 
   verify = () => {
     return this.service.get("/auth/verify")
