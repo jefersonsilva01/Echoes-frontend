@@ -3,7 +3,8 @@ import { TrendSection } from "./styles/TrendStyle";
 
 import Card from "./Card";
 
-const Trend = () => {
+const Trend = (props) => {
+  console.log(props);
   return (
     <TrendSection id="trend">
       <div id="trend-container">
@@ -17,6 +18,11 @@ const Trend = () => {
           <Card />
         </div>
       </div>
+      {
+        props.user ? (
+          <div id="footer-shadow"></div>
+        ) : ("")
+      }
     </TrendSection>
   )
 }

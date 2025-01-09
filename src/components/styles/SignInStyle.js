@@ -104,6 +104,10 @@ const SignInArea = styled.div`
       font-family: var(--Poppins);
       font-weight: 400;
       font-size: 1em;
+
+      &:focus{
+        outline: 3px solid var(--Action);
+      }
     }
 
     & > form > #signin {

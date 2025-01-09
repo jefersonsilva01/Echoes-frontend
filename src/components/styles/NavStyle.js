@@ -27,6 +27,19 @@ const NavBar = styled.nav`
       fill: var(--Active-Main);
     };
 
+    & > #auth-links > ul > li > a > #profile-img {
+      width: 48px;
+      margin-right: 16px;
+      border-radius: 50%;
+      border: 1px solid #202020;
+      transition: border 0.3s ease-in-out;
+
+      &:hover {
+        cursor: pointer;
+        border: 4px solid var(--Active-Main);
+      } 
+    }
+
     // Tablet
     @media (max-width: 1040px) {
       & > #auth-links > ul > svg { 
@@ -147,7 +160,7 @@ const Menu = styled.div`
     right: 0;
     margin-right: 2%;
     overflow: hidden;
-    height: ${props => props.open ? '200px' : '0px'};
+    height: ${props => props.open ? 'fit-content' : '0px'};
     transition: height 0.3s ease-in-out;
   };
 
@@ -183,7 +196,7 @@ const Menu = styled.div`
       width: 100vw;
       margin-right: 0%;
       overflow: hidden;
-      height: ${props => props.open ? '240px' : '0px'};
+      height: ${props => props.open ? 'fit-content' : '0px'};
     };
 
     & > #menu > ul > li:last-child {

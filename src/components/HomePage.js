@@ -11,12 +11,20 @@ import BtnGoToTop from './BtnGoToTop';
 const Home = (props) => {
   return (
     <>
-      <Nav />
+      <Nav
+        user={props.loggedInUser}
+        getUser={props.getUser}
+      />
       <Hero />
       <Fresh />
-      <Trend />
-      <Start />
-      <Footer />
+      <Trend user={props.loggedInUser} />
+      {
+        props.loggedInUser ? ("") :
+          (<>
+            <Start />
+            <Footer />
+          </>)
+      }
       <BtnGoToTop />
     </>
   )

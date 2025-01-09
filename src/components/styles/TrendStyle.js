@@ -4,7 +4,8 @@ const TrendSection = styled.section`
   width: 100%;
   height: auto;
   background-color: var(--WT-Main);
-  padding: 32px 0;
+  padding: 16px 0 0;
+  position: relative;
 
   & > #trend-container {
     margin: 0 auto;
@@ -24,6 +25,14 @@ const TrendSection = styled.section`
       justify-content: space-around;
       margin: 0 auto;
     }
+  }
+
+  & > #footer-shadow {
+    background-image: var(--Lin-Shadow);
+    height: 200px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
   }
 `;
 
