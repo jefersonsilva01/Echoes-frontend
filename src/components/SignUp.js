@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import AuthService from './auth/auth-service';
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { SignUpArea } from "./styles/SignUpStyle";
 
 const SignUp = (props) => {
@@ -12,6 +12,7 @@ const SignUp = (props) => {
   })
   const [errMsg, setErrMsg] = useState(null);
 
+  const history = useHistory();
 
   const service = new AuthService();
 
@@ -31,6 +32,7 @@ const SignUp = (props) => {
           confirmPassword: ""
         });
         props.getUser(response)
+        history.push("/");
       })
       .catch(error => {
         setErrMsg(error.message)

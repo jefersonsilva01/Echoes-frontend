@@ -6,15 +6,13 @@ import Fresh from './Fresh';
 import Trend from './Trend';
 import Start from './Start';
 import Footer from './Footer';
-import BtnGoToTop from './BtnGoToTop';
 
 const Home = (props) => {
   return (
     <>
-      <Nav
-        user={props.loggedInUser}
-        getUser={props.getUser}
-      />
+      {
+        props.loggedInUser ? ("") : (<Nav />)
+      }
       <Hero />
       <Fresh />
       <Trend user={props.loggedInUser} />
@@ -25,7 +23,6 @@ const Home = (props) => {
             <Footer />
           </>)
       }
-      <BtnGoToTop />
     </>
   )
 }

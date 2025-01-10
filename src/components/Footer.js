@@ -10,7 +10,7 @@ const Footer = () => {
         <ul>
           <li>
             <img id="rotate" src="./assets/Letters.png" alt="Circle text" />
-            <HashLink smooth to="#hero">
+            <HashLink smooth to="/#hero">
               ECHOES
             </HashLink>
           </li>
@@ -18,10 +18,10 @@ const Footer = () => {
             <Link to="/about">About</Link>
           </li>
           <li>
-            <HashLink smooth to="#fresh">Fresh</HashLink>
+            <HashLink smooth to="/#fresh">Fresh</HashLink>
           </li>
           <li>
-            <HashLink smooth to="#trend">Trends</HashLink>
+            <HashLink smooth to="/#trend">Trends</HashLink>
           </li>
           <li>
             <Link to="/signin">Sign in</Link>

@@ -4,7 +4,6 @@ import { TrendSection } from "./styles/TrendStyle";
 import Card from "./Card";
 
 const Trend = (props) => {
-  console.log(props);
   return (
     <TrendSection id="trend">
       <div id="trend-container">

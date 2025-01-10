@@ -5,7 +5,6 @@ import { NavBar, List, ListItem, StyledLink, Search, Button, Menu } from './styl
 import AuthService from "./auth/auth-service";
 
 const Nav = (props) => {
-  console.log(props)
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const service = new AuthService();
@@ -32,10 +31,10 @@ const Nav = (props) => {
                 <StyledLink to="/about">About</StyledLink>
               </ListItem>
               <ListItem>
-                <StyledLink smooth to="#fresh">Fresh</StyledLink>
+                <StyledLink smooth to="/#fresh">Fresh</StyledLink>
               </ListItem>
               <ListItem>
-                <StyledLink smooth to="#trend">Trends</StyledLink>
+                <StyledLink smooth to="/#trend">Trends</StyledLink>
               </ListItem>
             </List>
           </div>
@@ -93,10 +92,10 @@ const Nav = (props) => {
                     <StyledLink to="/about">About</StyledLink>
                   </li>
                   <li>
-                    <StyledLink smooth to="#fresh">Fresh</StyledLink>
+                    <StyledLink smooth to="/#fresh">Fresh</StyledLink>
                   </li>
                   <li>
-                    <StyledLink smooth to="#trend">Trends</StyledLink>
+                    <StyledLink smooth to="/#trend">Trends</StyledLink>
                   </li>
                   <li>
                     <StyledLink to="/new">New</StyledLink>
@@ -130,10 +129,10 @@ const Nav = (props) => {
                     <StyledLink to="/about">About</StyledLink>
                   </li>
                   <li>
-                    <StyledLink smooth to="#fresh">Fresh</StyledLink>
+                    <StyledLink smooth to="/#fresh">Fresh</StyledLink>
                   </li>
                   <li>
-                    <StyledLink smooth to="#trend">Trends</StyledLink>
+                    <StyledLink smooth to="/#trend">Trends</StyledLink>
                   </li>
                   <li>
                     <StyledLink to="/signin">Sign In</StyledLink>

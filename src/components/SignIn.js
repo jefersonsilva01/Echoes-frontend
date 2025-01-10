@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import AuthService from "./auth/auth-service";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { SignInArea } from "./styles/SignInStyle";
 
 const SignIn = (props) => {
 
   const [userState, setUserState] = useState({ email: "", password: "" });
   const [errMsg, setErrMsg] = useState(null);
+
+  const history = useHistory();
 
   const service = new AuthService();
 
@@ -22,6 +24,7 @@ const SignIn = (props) => {
           password: ""
         });
         props.getUser(response)
+        history.push("/");
       })
       .catch(error => {
         setErrMsg(error.message)
@@ -106,7 +109,7 @@ const SignIn = (props) => {
         </form>
 
       </div>
-    </SignInArea >
+    </SignInArea>
   )
 }
 

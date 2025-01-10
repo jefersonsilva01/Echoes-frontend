@@ -3,9 +3,12 @@ import { Switch, Route } from 'react-router-dom';
 
 import './App.css';
 
+import Nav from './components/Nav';
 import HomePage from './components/HomePage';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
+import BtnGoToTop from './components/BtnGoToTop';
+import Profile from './components/Profile';
 
 import AuthService from './components/auth/auth-service';
 import ProtectedRoute from './components/auth/protected-route';
@@ -48,10 +51,23 @@ const App = () => {
   if (loggedInUser) {
     return (
       <div className='App'>
+        <Nav
+          user={loggedInUser}
+          getUser={getTheUser} />
+
         <ProtectedRoute
+          exact path="/"
           user={loggedInUser}
           getUser={getTheUser}
           component={HomePage} />
+
+        <Switch>
+          <ProtectedRoute
+            exact path="/profile"
+            user={loggedInUser}
+            component={Profile} />
+        </Switch>
+        <BtnGoToTop />
       </div>
     );
   } else {
@@ -68,6 +84,7 @@ const App = () => {
             exact path="/signin"
             render={() => <SignIn getUser={getTheUser} />} />
         </Switch>
+        <BtnGoToTop />
       </div>
     );
   }
