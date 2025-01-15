@@ -6,6 +6,7 @@ import Fresh from './Fresh';
 import Trend from './Trend';
 import Start from './Start';
 import Footer from './Footer';
+import BtnGoToTop from './BtnGoToTop';
 
 const Home = (props) => {
   return (
@@ -23,6 +24,7 @@ const Home = (props) => {
             <Footer />
           </>)
       }
+      <BtnGoToTop />
     </>
   )
 }

@@ -7,12 +7,13 @@ const SignUpArea = styled.div`
   & > #signup-container {
     max-width: 1440px;
     width: fit-content;
-    height: auto;
+    height: 80vh;
     margin: 0 auto;
-    padding: 15% 8px;
+    padding: 0 8px;
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 
     & > img {
