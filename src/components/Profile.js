@@ -2,28 +2,31 @@ import React, { useState } from "react";
 import UserService from "./services/user-service";
 import AuthService from "./auth/auth-service";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { ProfileContainer } from './styles/ProfileStyle';
+import { ProfileContainer, ModalContainer } from './styles/ProfileStyle';
 
 const Profile = (props) => {
   const [currentUser, setCurrentUser] = useState(props.loggedInUser);
-  const oldUser = props.loggedInUser;
   const [showPass, setShowPass] = useState(false);
-  const history = useHistory();
+  const [modalState, setModal] = useState(false);
+
+  const oldUser = props.loggedInUser;
+
   const userService = new UserService();
   const authService = new AuthService();
+
+  const history = useHistory();
 
   const updateUser = e => {
     e.preventDefault();
 
     const update = {}
 
+
+
     if (currentUser.email !== oldUser.email) update.email = currentUser.email;
-
-    if (currentUser.password !== oldUser.password) update.password = currentUser.password;
-
-    if (currentUser.username !== oldUser.username) update.username = currentUser.username;
-
     if (currentUser.imgPath !== oldUser.imgPath) update.imgPath = currentUser.imgPath;
+    if (currentUser.password !== oldUser.password) update.password = currentUser.password;
+    if (currentUser.username !== oldUser.username) update.username = currentUser.username;
 
     userService.userUpdate(currentUser._id, update)
       .then(response => {
@@ -44,6 +47,7 @@ const Profile = (props) => {
         .then(response => {
           if (response.secure_url) {
             setCurrentUser({ ...currentUser, imgPath: response.secure_url })
+            return;
           }
         })
     }
@@ -71,6 +75,10 @@ const Profile = (props) => {
 
   const showHidePass = () => {
     setShowPass(!showPass);
+  }
+
+  const showModal = () => {
+    setModal(!modalState);
   }
 
   return (
@@ -146,9 +154,21 @@ const Profile = (props) => {
             )
           }
 
-          <button onClick={deleteProfile} name="delete">Delete</button>
+          <button onClick={showModal} name="delete">Delete</button>
         </form>
       </div>
+
+      <ModalContainer open={modalState} onClick={showModal}>
+        <div id="modal">
+          <h2>Are you sure you want to delete
+            your account?</h2>
+
+          <div id="buttons">
+            <button id="cancel" onClick={showModal}>Cancel</button>
+            <button onClick={deleteProfile} id="confirm">Confirm</button>
+          </div>
+        </div>
+      </ModalContainer>
     </ProfileContainer>
   )
 }
