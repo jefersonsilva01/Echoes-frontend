@@ -145,7 +145,7 @@ const Menu = styled.div`
   z-index: 1;
   position: fixed;
   top: 57px;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   overflow: hidden;
   visibility: ${props => props.open && props.user !== undefined ? 'visible' : 'hidden'};
@@ -163,7 +163,7 @@ const Menu = styled.div`
     top: 72px;
     right: 0;
     margin-right: 2%;
-    overflow: hidden;
+    ${'' /* overflow: hidden; */}
     height: ${props => props.open ? '200px' : '0px'};
     transition: height 0.3s ease-in-out;
   };
@@ -220,7 +220,9 @@ const Menu = styled.div`
   @media(max-width: 620px) {
     & > #menu-loggedout,
     & > #menu-loggedin {
+      position: fixed;
       width: 100vw;
+      left: 0;
       margin-right: 0%;
       overflow: hidden;
     };

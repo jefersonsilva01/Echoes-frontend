@@ -34,6 +34,7 @@
   font-family: var(--Poppins);
   font-style: normal;
   background-color: var(--BK-Main);
+  position: relative;
 }
 
 *::-webkit-scrollbar {

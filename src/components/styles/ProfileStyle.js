@@ -8,12 +8,13 @@ const ProfileContainer = styled.div`
   display: flex;
   justify-content: center;
   padding: 10% 8px 0;
+  width: 100vw;
 
   & > #profile-card {
     background-color: var(--WT-Main);
     border-radius: 16px;
     padding: 32px 16px;
-    max-height: 504px;
+    height: fit-content;
     max-width: 384px;
 
     & > form {

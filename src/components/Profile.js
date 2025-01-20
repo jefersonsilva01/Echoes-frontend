@@ -21,8 +21,6 @@ const Profile = (props) => {
 
     const update = {}
 
-
-
     if (currentUser.email !== oldUser.email) update.email = currentUser.email;
     if (currentUser.imgPath !== oldUser.imgPath) update.imgPath = currentUser.imgPath;
     if (currentUser.password !== oldUser.password) update.password = currentUser.password;
@@ -31,6 +29,7 @@ const Profile = (props) => {
     userService.userUpdate(currentUser._id, update)
       .then(response => {
         props.getUser(response);
+        setCurrentUser(response);
         history.push("/profile");
       })
       .catch(error => console.log(error.message));
@@ -47,7 +46,6 @@ const Profile = (props) => {
         .then(response => {
           if (response.secure_url) {
             setCurrentUser({ ...currentUser, imgPath: response.secure_url })
-            return;
           }
         })
     }
@@ -89,7 +87,7 @@ const Profile = (props) => {
           encType="multipart/form-data"
         >
           <label htmlFor="imgName">
-            <img src={oldUser.imgPath} alt="Profile cover" />
+            <img src={currentUser.imgPath} alt="Profile cover" />
           </label>
 
           <input

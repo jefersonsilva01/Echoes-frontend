@@ -8,6 +8,7 @@ import HomePage from './components/HomePage';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
 import Profile from './components/Profile';
+import NewArticle from './components/NewArticle';
 
 import AuthService from './components/auth/auth-service';
 import ProtectedRoute from './components/auth/protected-route';
@@ -54,12 +55,17 @@ const App = () => {
           user={loggedInUser}
           getUser={getTheUser} />
 
-        <ProtectedRoute
-          exact path="/"
-          user={loggedInUser}
-          component={HomePage} />
-
         <Switch>
+          <ProtectedRoute
+            exact path="/"
+            user={loggedInUser}
+            component={HomePage} />
+
+          <ProtectedRoute
+            exact path="/new"
+            user={loggedInUser}
+            component={NewArticle} />
+
           <ProtectedRoute
             exact path="/profile"
             user={loggedInUser}
