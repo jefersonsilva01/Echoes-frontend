@@ -172,6 +172,8 @@ const Menu = styled.div`
   & > #menu-loggedin > ul {
     list-style: none;
     height: 100%;
+    opacity: ${props => props.open ? '1' : '0'};
+    transition: all 0.3s ease-in-out;
   };
 
   & > #menu-loggedout > ul > li,
@@ -181,6 +183,7 @@ const Menu = styled.div`
 
   & > #menu-loggedout > ul > li > a,
   & > #menu-loggedin > ul > li > a {
+    
     color: var(--BK-Main-50);
   };
 
@@ -241,6 +244,8 @@ const Menu = styled.div`
     & > #menu-loggedin > ul > li:nth-child(2),
     & > #menu-loggedin > ul > li:nth-child(3) {
       display: block;
+      opacity: 1;
+      color: red;
     };
 
     & > #menu-loggedout > ul > li:last-child > div,

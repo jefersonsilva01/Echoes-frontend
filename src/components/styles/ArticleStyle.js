@@ -39,16 +39,19 @@ const ArticleContainer = styled.section`
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 64px;
+      padding:  ${props => props.image === "true" ? "0" : "64px"};
       background-color: var(--BTN);
-      opacity: 0.5;
+      opacity:  ${props => props.image === "true" ? "1" : "0.5"};
       border-radius: 4px;
       transition: all 0.3s ease-in-out;
       cursor: pointer;
 
       & > img {
-        width: 48px;
-        height: 48px;
+        width: ${props => props.image === "true" ? "650px" : "48px"};
+        height: ${props => props.image === "true" ? "178px" : "48px"};
+        object-fit: cover;
+        object-position: center;
+        border-radius: 4px;
       }
 
       & > input[type="file"] {

@@ -87,7 +87,7 @@ const SignIn = (props) => {
             type="email"
             name="email"
             maxLength="30"
-            size="25"
+            size="30"
             autoComplete="on"
             required
             value={userState.email}
@@ -98,7 +98,7 @@ const SignIn = (props) => {
             type="password"
             name="password"
             maxLength="30"
-            size="25"
+            size="30"
             autoComplete="current-password"
             required
             value={userState.password}

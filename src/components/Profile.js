@@ -46,6 +46,7 @@ const Profile = (props) => {
         .then(response => {
           if (response.secure_url) {
             setCurrentUser({ ...currentUser, imgPath: response.secure_url })
+            return;
           }
         })
     }
@@ -102,6 +103,8 @@ const Profile = (props) => {
             required
             type="text"
             name="username"
+            maxLength="30"
+            size="30"
             value={currentUser.username} />
 
           <input
@@ -109,6 +112,8 @@ const Profile = (props) => {
             required
             type="email"
             name="email"
+            maxLength="30"
+            size="30"
             value={currentUser.email} />
 
           <div>
@@ -116,6 +121,8 @@ const Profile = (props) => {
               onChange={handleChange}
               type={showPass ? "text" : "password"}
               name="password"
+              maxLength="30"
+              size="30"
               placeholder="********" />
 
             {

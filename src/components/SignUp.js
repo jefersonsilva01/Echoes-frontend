@@ -95,7 +95,7 @@ const SignUp = (props) => {
             type="text"
             name="username"
             maxLength="30"
-            size="25"
+            size="30"
             required
             value={userState.username}
             onChange={handleChange}
@@ -105,7 +105,7 @@ const SignUp = (props) => {
             type="email"
             name="email"
             maxLength="30"
-            size="25"
+            size="30"
             required
             value={userState.email}
             onChange={handleChange}
@@ -115,7 +115,7 @@ const SignUp = (props) => {
             type="password"
             name="password"
             maxLength="30"
-            size="25"
+            size="30"
             required
             value={userState.password}
             onChange={handleChange}
@@ -125,7 +125,7 @@ const SignUp = (props) => {
             type="password"
             name="confirmPassword"
             maxLength="30"
-            size="25"
+            size="30"
             required
             value={userState.confirmPassword}
             onChange={handleChange}

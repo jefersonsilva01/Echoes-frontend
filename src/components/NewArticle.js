@@ -1,61 +1,114 @@
 import React, { useState } from "react";
 import { ArticleContainer } from "./styles/ArticleStyle"
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import ArticleService from "./services/article-service";
 
 const NewArticle = props => {
   const [formElements, setFormElements] = useState([]);
+  const [article, setArticle] = useState(null);
 
-  const handlePublish = (element) => {
-    let newElement = "";
+  const articleService = new ArticleService();
 
-    if (element === "paragraph") {
-      newElement = {
-        type: "textarea",
-        placeholder: "Paragraph",
-        rows: 10,
-        cols: 50
-      }
-    } else {
-      newElement = {
-        type: "input",
-        placeholder: "Subtitle",
-        rows: 1,
-        cols: 50
-      }
+  const history = useHistory();
+
+  const createArticle = e => {
+    e.preventDefault();
+
+    articleService.newArticle(props.loggedInUser._id, article)
+      .then(response => {
+        history.push("/my-articles");
+      })
+      .catch(error => console.log(error.message));
+  }
+
+  const handleChange = e => {
+    const { name, value } = e.target
+
+    if (name === "cover") {
+      const uploadImage = new FormData();
+      uploadImage.append("image", e.target.files[0])
+
+      articleService.uploadImage(uploadImage)
+        .then(response => {
+          if (response.secure_url) {
+            setArticle({ ...article, cover: response.secure_url });
+          }
+        })
+      return;
     }
 
-    setFormElements(prevElements => [
-      ...prevElements,
-      newElement
-    ]);
+    setArticle({ ...article, [name]: value })
   };
 
-  const deleteElement = (index) => {
+  const handlePublish = element => {
+    let newElement = {};
 
+    element === "paragraph"
+      ? newElement.type = "textarea"
+      : newElement.type = "input"
+
+    setFormElements(prevElements => [...prevElements, newElement]);
+  };
+
+  const deleteElement = index => {
     let newFormElements = [...formElements]
     newFormElements.splice(index, 1);
+
     setFormElements(newFormElements);
   }
 
   return (
-    <ArticleContainer>
-      <form encType="multipart/form-data" id="form-article">
-        <input type="text" placeholder="Title" name="title" />
+    <ArticleContainer image={article?.cover ? "true" : "false"}>
+      <form
+        onSubmit={createArticle}
+        encType="multipart/form-data"
+        id="form-article">
 
-        <textarea type="text" placeholder="Description" rows="3" cols="50" maxLength="180" name="description" />
+        <input
+          onChange={handleChange}
+          type="text"
+          placeholder="Title"
+          maxLength="30"
+          size="30"
+          name="title" />
 
-        <label htmlFor="image-cover">
-          <img src="./assets/camera.svg" alt="Cover" />
+        <textarea
+          onChange={handleChange}
+          type="text"
+          placeholder="Description"
+          rows="3"
+          cols="50"
+          maxLength="180"
+          name="description" />
 
-          <input type="file" id="image-cover" name="cover" />
+        <label
+          htmlFor="image-cover">
+
+          <img
+            src={article?.cover ? article.cover : "../assets/camera.svg"}
+            alt="Cover" />
+
+          <input
+            onChange={handleChange}
+            type="file"
+            id="image-cover"
+            name="cover" />
         </label>
 
-        <textarea type="text" placeholder="Paragraph" rows="10" cols="50" name="paragraph" />
+        <textarea
+          onChange={handleChange}
+          type="text"
+          placeholder="Paragraph"
+          rows="10"
+          cols="50"
+          name="paragraph" />
 
         {
           formElements.map((element, index) => (
             element.type === "input" ? (
               <div className={`new-element-${index}  new-element`}>
                 <input
+                  onChange={handleChange}
                   type="text"
                   placeholder="Subtitle"
                   name={`subtitle-${index}`} />
@@ -69,11 +122,12 @@ const NewArticle = props => {
             ) : (
               <div className={`new-element-${index}  new-element`}>
                 <textarea
+                  onChange={handleChange}
                   type="text"
                   placeholder="Paragraph"
                   rows="10"
                   cols="50"
-                  name={index === 0 ? `paragraph-${index + 1}` : `paragraph-${index}`} />
+                  name={`paragraph-${index}`} />
 
                 <svg onClick={() => deleteElement(index)} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M10 9.99998C10.5523 9.99998 11 10.4477 11 11V16C11 16.5523 10.5523 17 10 17C9.44772 17 9 16.5523 9 16V11C9 10.4477 9.44772 9.99998 10 9.99998Z" fill="black" />
@@ -81,8 +135,7 @@ const NewArticle = props => {
                   <path fillRule="evenodd" clipRule="evenodd" d="M9 0.999977C7.89543 0.999977 7 1.89541 7 2.99998V4.99998H3C2.44772 4.99998 2 5.44769 2 5.99998C2 6.55226 2.44772 6.99998 3 6.99998H4.11765L4.88926 20.1174C4.95145 21.1746 5.82686 22 6.88581 22H17.1142C18.1731 22 19.0486 21.1746 19.1107 20.1174L19.8824 6.99998H21C21.5523 6.99998 22 6.55226 22 5.99998C22 5.44769 21.5523 4.99998 21 4.99998H17V2.99998C17 1.89541 16.1046 0.999977 15 0.999977H9ZM6.12111 6.99998L6.88581 20H17.1142L17.8789 6.99998H6.12111ZM9 2.99998H15V4.99998H9V2.99998Z" fill="black" />
                 </svg>
               </div>
-            )
-          ))
+            )))
         }
       </form>
 
