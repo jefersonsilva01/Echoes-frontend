@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { ArticleContainer } from "./styles/ArticleStyle"
+import { NewArticleContainer } from "./styles/NewArticleStyle"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import ArticleService from "./services/article-service";
 
 const NewArticle = props => {
   const [formElements, setFormElements] = useState([]);
-  const [article, setArticle] = useState(null);
+  const [article, setArticle] = useState({ username: props.loggedInUser.username });
 
   const articleService = new ArticleService();
 
@@ -58,7 +58,7 @@ const NewArticle = props => {
   }
 
   return (
-    <ArticleContainer image={article?.cover ? "true" : "false"}>
+    <NewArticleContainer image={article?.cover ? "true" : "false"}>
       <form
         onSubmit={createArticle}
         encType="multipart/form-data"
@@ -68,8 +68,8 @@ const NewArticle = props => {
           onChange={handleChange}
           type="text"
           placeholder="Title"
-          maxLength="30"
-          size="30"
+          maxLength="60"
+          size="60"
           name="title" />
 
         <textarea
@@ -155,7 +155,7 @@ const NewArticle = props => {
         <button type="submit" form="form-article">Publish</button>
       </div>
 
-    </ArticleContainer>
+    </NewArticleContainer>
   )
 }
 

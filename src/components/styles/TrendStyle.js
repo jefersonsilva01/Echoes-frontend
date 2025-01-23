@@ -4,13 +4,8 @@ const TrendSection = styled.section`
   width: 100%;
   height: auto;
   background-color: var(--WT-Main);
-  padding: 16px 0 0;
+  padding: 40px 16px;
   position: relative;
-
-  & > #trend-container {
-    margin: 0 auto;
-    max-width: 1440px;
-    padding: 0 32px 32px;
 
     & > h2 {
       padding-bottom: 20px;
@@ -20,20 +15,16 @@ const TrendSection = styled.section`
 
     & > #trend-cards {
       display: flex;
-      row-gap: 32px;
       flex-wrap: wrap;
-      justify-content: space-around;
+      row-gap: 32px;
+      justify-content: center;
+      width: 98.8%;
       margin: 0 auto;
-    }
-  }
 
-  & > #footer-shadow {
-    background-image: var(--Lin-Shadow);
-    height: 200px;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-  }
+      & > div {
+        margin: 0 16px;
+      }
+    }
 `;
 
 export { TrendSection };

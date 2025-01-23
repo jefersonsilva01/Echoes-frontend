@@ -14,6 +14,11 @@ class UserService {
       .then(response => response.data);
   }
 
+  myArticles = (id) => {
+    return this.service.get(`/api/my-articles?id=${id}`)
+      .then(response => response.data);
+  }
+
   uploadImage = (image) => {
     return this.service.post('/api/upload', image)
       .then(response => response.data);

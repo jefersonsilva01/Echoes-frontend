@@ -9,6 +9,8 @@ const CardContainer = styled.div`
   padding: 16px;
   box-shadow: none;
   transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
 
   &:hover {
     background-color: var(--BG-Card);
@@ -16,50 +18,68 @@ const CardContainer = styled.div`
     box-shadow: 0px 5px 10px 0px var(--BK-Main-50);
   }
 
-  & #profile-data {
-    display: flex;
-    margin-bottom: 12px;
+  & > a {
+    text-decoration: none;
+    color: unset;
+    
+    & #profile-data {
+      display: flex;
+      margin-bottom: 12px;
 
-    & #profile-info {
-      margin-left: 16px;
+      & > img {
+        width: 48px;
+        height: 48px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 50%;
+      }
 
-      & :nth-child(2) {
-        color: var(--BK-Main-50);
+      & #profile-info {
+        margin-left: 16px;
+
+        & :nth-child(2) {
+          color: var(--BK-Main-50);
+          font-size: 14px;
+        }
+      }
+    }
+
+    & > img {
+      margin-bottom: 12px;
+      border-radius: 4px;
+      width: 100%;
+
+      // Mobile
+      @media (max-width: 620px) {
+        width: 100%;
+      }
+    }
+
+    & > h4 {
+      margin-bottom: 12px;
+
+      // Mobile
+      @media (max-width: 620px) {
         font-size: 14px;
       }
     }
-  }
 
-  & > img {
-    margin-bottom: 12px;
-
-    // Mobile
-    @media (max-width: 620px) {
-      width: 100%;
-    }
-  }
-
-  & > h4 {
-    margin-bottom: 12px;
-
-    // Mobile
-    @media (max-width: 620px) {
+    & > p {
+      color: var(--BK-Main-50);
+      height: 64px;
+      overflow: hidden;
       font-size: 14px;
-    }
-  }
+      margin-bottom: 16px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      text-overflow: ellipsis;  
 
-  & > p {
-    color: var(--BK-Main-50);
-    height: 64px;
-    overflow: hidden;
-    font-size: 14px;
-    margin-bottom: 16px;
-
-    // Mobile
-    @media (max-width: 620px) {
-      font-size: 14px;
+      // Mobile
+      @media (max-width: 620px) {
+        font-size: 14px;
+      }
     }
-  }
+  };
 
   & > #social-icons {
     display: flex;

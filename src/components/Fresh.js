@@ -1,6 +1,6 @@
 import React from "react";
 import { FreshSection } from "./styles/CarrouselStyle";
-import Card from "./Card";
+import Card from "./Card2";
 
 const Carrousel = () => {
   return (

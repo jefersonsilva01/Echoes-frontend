@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ArticleContainer = styled.section`
+const NewArticleContainer = styled.section`
   height: 100%;
   min-height: 100vh;
   background-color: var(--WT-BG);
@@ -22,7 +22,7 @@ const ArticleContainer = styled.section`
       font-weight: 400;
       font-size: 1em;
       padding: 8px 16px;
-      border: 2px solid transparent;
+      border: 2px solid var(--BK-Main-50);
       outline: none;
       border-radius: 4px;
       transition: all 0.3s ease-in-out;
@@ -39,11 +39,10 @@ const ArticleContainer = styled.section`
       display: flex;
       align-items: center;
       justify-content: center;
-      padding:  ${props => props.image === "true" ? "0" : "64px"};
       background-color: var(--BTN);
+      padding:  ${props => props.image === "true" ? "0" : "64px"};
       opacity:  ${props => props.image === "true" ? "1" : "0.5"};
       border-radius: 4px;
-      transition: all 0.3s ease-in-out;
       cursor: pointer;
 
       & > img {
@@ -139,4 +138,4 @@ const ArticleContainer = styled.section`
   }
 `;
 
-export { ArticleContainer };
+export { NewArticleContainer };
