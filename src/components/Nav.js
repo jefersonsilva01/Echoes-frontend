@@ -95,7 +95,7 @@ const Nav = (props) => {
                   <StyledLink smooth to="/#trend" onClick={showHideMenu}>Trends</StyledLink>
                 </li>
                 <li>
-                  <StyledLink to="/new" onClick={showHideMenu}>New</StyledLink>
+                  <StyledLink to="/new-article" onClick={showHideMenu}>New</StyledLink>
                 </li>
                 <li>
                   <StyledLink to="/my-articles" onClick={showHideMenu}>My Articles</StyledLink>

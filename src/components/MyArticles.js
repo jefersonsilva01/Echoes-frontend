@@ -36,7 +36,7 @@ const MyArticles = (props) => {
         ) : (
           <div id="empty-articles">
             <h1>No articles to see</h1>
-            <Link to="/new">Click here do start creating</Link>
+            <Link to="/new-article">Click here do start creating</Link>
           </div>
         )
       }

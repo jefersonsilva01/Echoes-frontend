@@ -10,6 +10,7 @@ import SignIn from './components/SignIn';
 import Profile from './components/Profile';
 import NewArticle from './components/NewArticle';
 import MyArticles from './components/MyArticles';
+import Article from './components/Article';
 
 import AuthService from './components/auth/auth-service';
 import ProtectedRoute from './components/auth/protected-route';
@@ -63,7 +64,7 @@ const App = () => {
             component={HomePage} />
 
           <ProtectedRoute
-            exact path="/new"
+            exact path="/new-article"
             user={loggedInUser}
             component={NewArticle} />
 
@@ -71,6 +72,11 @@ const App = () => {
             exact path="/my-articles"
             user={loggedInUser}
             component={MyArticles} />
+
+          <ProtectedRoute
+            exact path="/article"
+            user={loggedInUser}
+            component={Article} />
 
           <ProtectedRoute
             exact path="/profile"

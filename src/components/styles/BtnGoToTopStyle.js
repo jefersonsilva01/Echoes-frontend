@@ -11,7 +11,7 @@ const GoToTopButton = styled.div`
     margin: 0 auto;
     position: relative;
 
-    & > a {
+    & > button {
       position: absolute;
       right: 15px;
       z-index: 2;
