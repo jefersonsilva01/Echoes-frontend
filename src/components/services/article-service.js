@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-class UserService {
+class ArticleService {
   constructor() {
     let service = axios.create({
       baseURL: process.env.REACT_APP_SERVER_URL,
@@ -23,6 +23,11 @@ class UserService {
     return this.service.post('/api/upload', image)
       .then(response => response.data);
   }
+
+  deleteArticle = (id) => {
+    return this.service.delete(`/api/article/delete?id=${id}`)
+      .then(response => response.data);
+  }
 }
 
-export default UserService;
+export default ArticleService;

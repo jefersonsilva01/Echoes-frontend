@@ -25,7 +25,7 @@ const MyArticlesContrainer = styled.section`
   & > #empty-articles {
     width: 100%;
     height: calc(100% - 71px);
-    padding: 64px 16px;
+    padding: 16px;
     text-align: center;
 
     & > h1 {
@@ -38,6 +38,12 @@ const MyArticlesContrainer = styled.section`
       text-decoration: none;
       font-size: 1.5em;
       color: var(--Action);
+    }
+
+    & > img {
+      width: 50%;
+      display: block;
+      margin: 0 auto;
     }
   }
 `;

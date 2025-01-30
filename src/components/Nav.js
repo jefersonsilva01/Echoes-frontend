@@ -80,7 +80,7 @@ const Nav = (props) => {
           </div>
         </div>
       </NavBar>
-      <Menu open={isMenuOpen} user={props.user}>
+      <Menu open={isMenuOpen} onClick={showHideMenu} user={props.user}>
         {
           props.user !== undefined ? (
             <div id="menu-loggedin">

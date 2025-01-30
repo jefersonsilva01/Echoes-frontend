@@ -17,6 +17,7 @@ const NewArticle = props => {
     articleService.newArticle(props.loggedInUser._id, article)
       .then(response => {
         history.push("/my-articles");
+        window.location.reload();
       })
       .catch(error => console.log(error.message));
   }
