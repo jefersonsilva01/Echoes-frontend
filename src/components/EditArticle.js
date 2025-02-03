@@ -1,22 +1,49 @@
-import React, { useState } from "react";
-import { NewArticleContainer } from "./styles/NewArticleStyle"
+import React, { useState, useEffect } from "react";
+import { EditArticleContainer } from "./styles/EditArticleStyle"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import ArticleService from "./services/article-service";
 
 const NewArticle = props => {
+  const location = useLocation();
+  const { content } = location.state || {};
+
   const [formElements, setFormElements] = useState([]);
-  const [article, setArticle] = useState({ username: props.loggedInUser.username });
+  const [article, setArticle] = useState(content.article);
 
   const articleService = new ArticleService();
+
   const history = useHistory();
 
-  const createArticle = e => {
+  useEffect(() => {
+    if (!article) return;
+
+    const result = [];
+
+    // Extrair e ordenar as chaves
+    const keys = Object.keys(article).filter(key => key.startsWith('new-paragraph') || key.startsWith('subtitle'));
+    keys.sort((a, b) => {
+      // Extrair o número no final de cada chave
+      const numA = parseInt(a.match(/\d+$/)?.[0] || -1);
+      const numB = parseInt(b.match(/\d+$/)?.[0] || -1);
+      return numA - numB;
+    });
+
+    // Adicionar os valores ordenados ao resultado
+    keys.forEach(key => {
+      result.push({ type: key.startsWith('new-paragraph') ? 'textarea' : 'input', content: article[key], articleType: key });
+    });
+
+    setFormElements(result);
+  }, [article]);
+
+  const updateArticle = e => {
     e.preventDefault();
 
-    articleService.newArticle(props.loggedInUser._id, article)
+    articleService.updateArticle(content._id, article)
       .then(response => {
         history.push("/my-articles");
-        window.location.reload();
+        // window.location.reload();
       })
       .catch(error => console.log(error.message));
   }
@@ -37,6 +64,7 @@ const NewArticle = props => {
       return;
     }
 
+    console.log({ ...article, [name]: value })
     setArticle({ ...article, [name]: value })
   };
 
@@ -57,11 +85,10 @@ const NewArticle = props => {
     setFormElements(newFormElements);
   }
 
-
   return (
-    <NewArticleContainer image={article?.cover ? "true" : "false"}>
+    <EditArticleContainer>
       <form
-        onSubmit={createArticle}
+        onSubmit={updateArticle}
         encType="multipart/form-data"
         id="form-article">
 
@@ -69,6 +96,7 @@ const NewArticle = props => {
           onChange={handleChange}
           type="text"
           placeholder="Title"
+          value={article.title}
           maxLength="60"
           size="60"
           name="title" />
@@ -77,6 +105,7 @@ const NewArticle = props => {
           onChange={handleChange}
           type="text"
           placeholder="Description"
+          value={article.description}
           rows="3"
           cols="50"
           maxLength="180"
@@ -85,15 +114,9 @@ const NewArticle = props => {
         <label
           htmlFor="image-cover">
 
-          {
-            article?.cover
-              ? (<img
-                src={article.cover}
-                alt="Cover" />)
-
-              : (<div className="img">
-              </div>)
-          }
+          <img
+            src={article.cover}
+            alt="Cover" />
 
           <input
             onChange={handleChange}
@@ -106,6 +129,7 @@ const NewArticle = props => {
           onChange={handleChange}
           type="text"
           placeholder="Paragraph"
+          value={article.paragraph}
           rows="10"
           cols="50"
           name="paragraph" />
@@ -115,6 +139,9 @@ const NewArticle = props => {
             element.type === "input" ? (
               <div key={index} className={`new-element-${index}  new-element`}>
                 <input
+                  value={article[element.articleType]
+                    ? article[element.articleType]
+                    : ""}
                   onChange={handleChange}
                   type="text"
                   placeholder="Subtitle"
@@ -129,6 +156,9 @@ const NewArticle = props => {
             ) : (
               <div key={index} className={`new-element-${index}  new-element`}>
                 <textarea
+                  value={article[element.articleType]
+                    ? article[element.articleType]
+                    : ""}
                   onChange={handleChange}
                   type="text"
                   placeholder="Paragraph"
@@ -159,10 +189,10 @@ const NewArticle = props => {
           </button>
         </div>
 
-        <button type="submit" form="form-article">Publish</button>
+        <button type="submit" form="form-article">Update</button>
       </div>
 
-    </NewArticleContainer>
+    </EditArticleContainer>
   )
 }
 

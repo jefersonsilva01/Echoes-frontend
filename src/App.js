@@ -11,6 +11,7 @@ import Profile from './components/Profile';
 import NewArticle from './components/NewArticle';
 import MyArticles from './components/MyArticles';
 import Article from './components/Article';
+import EditArticle from './components/EditArticle';
 
 import AuthService from './components/auth/auth-service';
 import ProtectedRoute from './components/auth/protected-route';
@@ -77,6 +78,11 @@ const App = () => {
             exact path="/article"
             user={loggedInUser}
             component={Article} />
+
+          <ProtectedRoute
+            exact path="/edit-article"
+            user={loggedInUser}
+            component={EditArticle} />
 
           <ProtectedRoute
             exact path="/profile"

@@ -1,4 +1,3 @@
-- [ ] Edit article
 - [ ] Create Bookmarks
 - [ ] Mark Bookmarks
 

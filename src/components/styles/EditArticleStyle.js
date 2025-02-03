@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const NewArticleContainer = styled.section`
+const EditArticleContainer = styled.section`
   height: 100%;
   min-height: 100vh;
   background-color: var(--WT-BG);
@@ -40,18 +40,14 @@ const NewArticleContainer = styled.section`
       align-items: center;
       justify-content: center;
       background-color: var(--BTN);
-      padding:  ${props => props.image === "true" ? "0" : "64px"};
-      opacity:  ${props => props.image === "true" ? "1" : "0.5"};
+      padding:  0;
+      opacity:  1;
       border-radius: 4px;
       cursor: pointer;
 
-      & > img, .img {
-        background-image: ${props => props.image === "true" ? "none" : "url(../assets/camera.svg)"};
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
-        width: ${props => props.image === "true" ? "650px" : "64px"};
-        height: ${props => props.image === "true" ? "178px" : "64px"};
+      & > img {
+        width: 650px;
+        height: 178px;
         object-fit: cover;
         object-position: center;
         border-radius: 4px;
@@ -142,4 +138,4 @@ const NewArticleContainer = styled.section`
   }
 `;
 
-export { NewArticleContainer };
+export { EditArticleContainer };

@@ -24,6 +24,11 @@ class ArticleService {
       .then(response => response.data);
   }
 
+  updateArticle = (id, article) => {
+    return this.service.put(`/api/update-article?id=${id}`, article)
+      .then(response => response.data);
+  }
+
   deleteArticle = (id) => {
     return this.service.delete(`/api/article/delete?id=${id}`)
       .then(response => response.data);

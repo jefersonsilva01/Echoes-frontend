@@ -48,6 +48,9 @@ const CardContainer = styled.div`
       margin-bottom: 12px;
       border-radius: 4px;
       width: 100%;
+      height: 178px;
+      object-fit: cover;
+      object-position: center;
 
       // Mobile
       @media (max-width: 620px) {
@@ -101,9 +104,22 @@ const CardContainer = styled.div`
         &:nth-child(1):hover > path {
           fill: var(--Alert);
         }
+        
+      }
 
-        &:nth-child(2):hover > path {
-          fill: var(--Action);
+      & > a {
+        height: 24px;
+
+        & > svg {
+          margin: 0 16px;
+
+          & > path {
+            transition: all 0.3s ease-in-out;
+          }
+
+          &:nth-child(1):hover > path {
+            fill: var(--Action);
+          }
         }
       }
     }

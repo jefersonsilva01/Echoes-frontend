@@ -11,7 +11,7 @@ const Article = props => {
     const result = [];
 
     // Extrair e ordenar as chaves
-    const keys = Object.keys(article).filter(key => key.startsWith('paragraph') || key.startsWith('subtitle'));
+    const keys = Object.keys(article).filter(key => key.startsWith('new-paragraph') || key.startsWith('subtitle'));
     keys.sort((a, b) => {
       // Extrair o número no final de cada chave
       const numA = parseInt(a.match(/\d+$/)?.[0] || -1);
@@ -21,7 +21,7 @@ const Article = props => {
 
     // Adicionar os valores ordenados ao resultado
     keys.forEach(key => {
-      result.push({ type: key.startsWith('paragraph') ? 'paragraph' : 'subtitle', content: article[key] });
+      result.push({ type: key.startsWith('new-paragraph') ? 'new-paragraph' : 'subtitle', content: article[key] });
     });
 
     return result;
@@ -54,15 +54,17 @@ const Article = props => {
         </div>
 
         <img id="cover" src={content.article.cover.includes("picsum")
-          ? (`${content.article.cover}/799/368`)
+          ? (`${content.article.cover}`)
           : (content.article.cover)} alt="Cover" />
 
         <hr />
 
+        <p className="paragraph">{content.article.paragraph}</p>
+
         {
           orderedContent.map((item, index) => (
-            item.type === 'paragraph'
-              ? (<p key={index} className="paragraph">{item.content}</p>)
+            item.type === 'new-paragraph'
+              ? (<p key={index} className="new-paragraph">{item.content}</p>)
               : (<h2 key={index} className="subtitle">{item.content}</h2>)
           ))
         }

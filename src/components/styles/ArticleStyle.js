@@ -61,11 +61,14 @@ const ArticleContainer = styled.section`
     
     & > #cover {
       width: 100%;
+      height: 100%;
       max-width: 799px;
       max-height: 368px;
       margin-top: 40px;
       border-radius: 12px;
       margin-bottom: 52px;
+      object-fit: cover;
+      object-position: center;
     }
 
     & > hr {
@@ -73,7 +76,7 @@ const ArticleContainer = styled.section`
       margin-bottom: 36px;
     }
 
-    & > .paragraph {
+    & > .paragraph, .new-paragraph {
       color: var(--BK-Main-50);
       white-space: pre-line;
       word-break: break-word;
