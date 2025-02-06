@@ -101,7 +101,7 @@ const Nav = (props) => {
                   <StyledLink to="/my-articles" onClick={showHideMenu}>My Articles</StyledLink>
                 </li>
                 <li>
-                  <StyledLink to="/groups" onClick={showHideMenu}>Groups</StyledLink>
+                  <StyledLink to="/bookmarks" onClick={showHideMenu}>Bookmarks</StyledLink>
                 </li>
                 <li>
                   <StyledLink to="/profile" onClick={showHideMenu}>Profile</StyledLink>

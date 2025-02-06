@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import './App.css';
@@ -12,103 +12,144 @@ import NewArticle from './components/NewArticle';
 import MyArticles from './components/MyArticles';
 import Article from './components/Article';
 import EditArticle from './components/EditArticle';
+import Bookmarks from './components/Bookmarks';
 
-import AuthService from './components/auth/auth-service';
 import ProtectedRoute from './components/auth/protected-route';
+import AuthService from './components/auth/auth-service';
+const service = new AuthService();
 
 const App = () => {
   const [loggedInUser, setLoggedInUser] = useState(null);
-  const service = useMemo(() => new AuthService(), []);
+  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        // Verifica os parâmetros da URL
-        const params = new URLSearchParams(window.location.search);
-        const userData = params.get('user');
+  const fetchUser = useCallback(() => {
+    // Verifica os parâmetros da URL
+    const params = new URLSearchParams(window.location.search);
+    const userData = params.get('user');
 
-        if (userData) {
-          setLoggedInUser(JSON.parse(userData));
-        } else {
-          // Se não houver dados no URL, verifica via serviço de autenticação
-          const response = await service.verify();
-          if (response) {
+    if (userData) {
+      setLoggedInUser(JSON.parse(userData));
+      setLoading(false)
+    } else {
+      // Se não houver dados no URL, verifica via serviço de autenticação
+      service.verify()
+        .then(response => {
+          if (JSON.stringify(loggedInUser) !== JSON.stringify(response)) {
             setLoggedInUser(response);
-          } else {
+          }
+        })
+        .catch(err => {
+          if (loggedInUser !== false) {
             setLoggedInUser(false);
           }
-        }
-      } catch (err) {
-        console.error("Erro ao verificar usuário:", err);
-        setLoggedInUser(false);
-      }
-    };
-
-    fetchUser();
-  }, [service]);
+        })
+        .finally(() => setLoading(false))
+    }
+  }, [loggedInUser]);
 
   const getTheUser = (userObj) => {
     setLoggedInUser(userObj);
   };
 
-  if (loggedInUser) {
-    return (
-      <div className='App'>
-        <Nav
-          user={loggedInUser}
-          getUser={getTheUser} />
+  useEffect(() => {
+    fetchUser();
+  }, [fetchUser]);
 
-        <Switch>
-          <ProtectedRoute
-            exact path="/"
-            user={loggedInUser}
-            component={HomePage} />
-
-          <ProtectedRoute
-            exact path="/new-article"
-            user={loggedInUser}
-            component={NewArticle} />
-
-          <ProtectedRoute
-            exact path="/my-articles"
-            user={loggedInUser}
-            component={MyArticles} />
-
-          <ProtectedRoute
-            exact path="/article"
-            user={loggedInUser}
-            component={Article} />
-
-          <ProtectedRoute
-            exact path="/edit-article"
-            user={loggedInUser}
-            component={EditArticle} />
-
-          <ProtectedRoute
-            exact path="/profile"
-            user={loggedInUser}
-            getUser={getTheUser}
-            component={Profile} />
-        </Switch>
-      </div>
-    );
-  } else {
-    return (
-      <div className="App">
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-
-          <Route
-            exact path="/signup"
-            render={() => <SignUp getUser={getTheUser} />} />
-
-          <Route
-            exact path="/signin"
-            render={() => <SignIn getUser={getTheUser} />} />
-        </Switch>
-      </div>
-    );
+  if (loading) {
+    return <div>Carregando...</div>;
   }
+
+  return (
+    (loggedInUser)
+      ? (
+        <div className='App'>
+          <Nav
+            user={loggedInUser}
+            getUser={getTheUser} />
+
+          <Switch>
+            <ProtectedRoute
+              exact path="/"
+              user={loggedInUser}
+              component={HomePage} />
+
+            <ProtectedRoute
+              exact path="/new-article"
+              user={loggedInUser}
+              component={NewArticle} />
+
+            <ProtectedRoute
+              exact path="/my-articles"
+              user={loggedInUser}
+              component={MyArticles} />
+
+            <ProtectedRoute
+              exact path="/article"
+              user={loggedInUser}
+              component={Article} />
+
+            <ProtectedRoute
+              exact path="/edit-article"
+              user={loggedInUser}
+              component={EditArticle} />
+
+            <ProtectedRoute
+              exact path="/bookmarks"
+              user={loggedInUser}
+              component={Bookmarks} />
+
+            <ProtectedRoute
+              exact path="/profile"
+              user={loggedInUser}
+              getUser={getTheUser}
+              component={Profile} />
+          </Switch>
+        </div>
+      )
+
+      : (
+        <div className='App'>
+          <Switch>
+            <Route
+              exact path="/"
+              component={HomePage} />
+
+            <Route
+              exact path="/signup"
+              render={() => <SignUp getUser={getTheUser} />} />
+
+            <Route
+              exact path="/signin"
+              render={() => <SignIn getUser={getTheUser} />} />
+
+            <Route
+              path="/new-article"
+              component={HomePage} />
+
+            <Route
+              path="/my-articles"
+              component={HomePage} />
+
+            <Route
+              path="/article"
+              component={HomePage} />
+
+            <Route
+              path="/edit-article"
+              component={HomePage} />
+
+            <Route
+              exact path="/bookmarks"
+              component={HomePage} />
+
+            <Route
+              path="/profile"
+              component={HomePage} />
+          </Switch>
+        </div>
+      )
+
+  );
 };
 
 export default App;

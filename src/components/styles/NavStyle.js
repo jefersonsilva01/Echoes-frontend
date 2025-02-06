@@ -7,7 +7,7 @@ const NavBar = styled.nav`
   height: auto;
   padding: 8px 16px;
   position: fixed;
-  z-index: 2;
+  z-index: 3;
   margin-top: 0px;
   width: 100vw;
 
@@ -142,7 +142,7 @@ const Button = styled(Link)`
 
 const Menu = styled.div`
   background-color: var(--BK-Main-50);
-  z-index: 1;
+  z-index: 3;
   position: fixed;
   top: 57px;
   width: 100vw;

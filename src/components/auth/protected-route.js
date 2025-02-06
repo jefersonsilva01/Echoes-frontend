@@ -11,7 +11,8 @@ const protectedRoute = ({ component: Component, user, ...rest }) => {
         } else {
           return <Redirect to={{ pathname: '/', state: { from: props.location } }} />
         }
-      }}
+      }
+      }
     />
   )
 }
