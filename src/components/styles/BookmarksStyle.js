@@ -3,48 +3,26 @@ import styled from "styled-components";
 const BookmarksContainer = styled.section`
   background-color: var(--WT-Main);
   width: 100vw;
-  height: calc(100vh - 71px);
   height: fit-content;
-  top: 71px;
   position: relative;
   display: flex;
-  align-items: center;
+  top: 71px;
+  align-items: start;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: start;
   padding: 16px 64px;
 
-  & > #new-bookmark {
-    width: calc(20% - 16px);
-    height: 193px;
-    padding: 32px;
-    border-radius: 8px;
-    position: relative;
-    display: flex;
+  @media(max-width: 1040px){
     justify-content: center;
-    align-items: center;
-    border: 1px solid var(--BK-Main-50);
-    cursor: pointer;
-    background-color: var(--BG-Card);
-    transition: 0.3s all ease-in-out;
-    margin: 0 4px 16px; 
-
-    &:hover {
-      background-color: var(--BTN-Hover);
-      
-      & > svg > path {
-        fill: var(--Action);
-      }
-    }
   }
 
   & > .bookmark {
     cursor: pointer;    
-    border: 1px solid transparent;
     border-radius: 8px;
     padding: 8px;
     margin: 0 4px 16px;
-    width: calc(20% - 16px);
+    width: fit-content;
     height: fit-content;
     display: flex;
     flex-direction: column;
@@ -52,16 +30,25 @@ const BookmarksContainer = styled.section`
     align-items: center;
     background-color: transparent;
     transition: all 0.3s ease-in-out;
+    position: relative;
 
-    & > svg > path {
+    & > .new {
+      fill: var(--BTN);
+      position: absolute;
+      z-index: 3;
+      
+      & > path {
+        fill: var(--Action);
+      }
+    }
+
+    & > .folder > path {
       fill: var(--BTN);
       transition: all 0.3s ease-in-out;
     }
 
     &:hover {
-      border: 1px solid var(--BK-Main-50);
-
-      & > svg > path{
+      & > .folder > path{
         fill: var(--BTN-Hover);
       }
     }
@@ -75,7 +62,7 @@ const BookmarksContainer = styled.section`
       overflow-wrap: break-word;
       text-overflow: ellipsis;  
     }
-    
+
     & > #edit-icons {
       position: absolute;
       display: flex;
@@ -119,11 +106,12 @@ const ModalContainer = styled.div`
     border-radius: 8px;
     padding: 64px 32px;
     max-width: 600px;
-    width: 600px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
+    justify-content: center;
     top: 25%;
     margin: 0 auto;
     height: ${props => props.open ? '258px' : '0px'};
@@ -147,13 +135,14 @@ const ModalContainer = styled.div`
 
       & > #buttons {
         margin-top: 24px;
-        visibility: ${props => props.open ? '1' : '0'};
+        visibility: ${props => props.open ? 'visible' : 'hidden'};
         transition: opacity 1s ease-in-out;
+        width: 100%;
         
         & > button {
-          margin: 0 8px;
+          margin: 4px 0px;
           padding: 8px 16px;
-          width: 174px;
+          width: 100%;
           box-shadow: none;
           border: none;
           font-family: var(--Poppins);
@@ -190,15 +179,17 @@ const ModalContainer = styled.div`
       text-align: center;
     }
 
-    & > #buttons {
-      margin-top: 24px;
-      visibility: ${props => props.open ? '1' : '0'};
+    & > #buttons-delete {
+      visibility: ${props => props.open ? 'visible' : 'hidden'};
       transition: opacity 1s ease-in-out;
+      width: 50%;
+      margin-top: 24px;
       
       & > button {
-        margin: 0 8px;
+        position: relative;
+        margin: 4px auto;
         padding: 8px 16px;
-        width: 174px;
+        width: 100%;
         box-shadow: none;
         border: none;
         font-family: var(--Poppins);

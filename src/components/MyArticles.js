@@ -10,7 +10,6 @@ const articleService = new ArticleService();
 const MyArticles = (props) => {
   const [articles, setArticles] = useState([]);
 
-
   useEffect(() => {
     articleService.myArticles(props.loggedInUser._id)
       .then(response => {

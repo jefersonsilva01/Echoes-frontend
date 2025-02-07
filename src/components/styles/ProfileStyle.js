@@ -144,31 +144,30 @@ const ModalContainer = styled.div`
   background-color: var(--BK-Main-50);
   position: absolute;
   z-index: 2;
-  height: calc(100% - 10px);
-  width: 100%;
-  top: 14px;
+  height: calc(100vh + 14px);
+  width: 100vw;
+  top: -71px;
   visibility: ${props => props.open ? 'visible' : 'hidden'};
   opacity: ${props => props.open ? '1' : '0'};
   transition: opacity 0.1s ease-in-out;
 
   & > #modal {
     background-color: var(--WT-Main);
-    width: fit-content;
     border-radius: 8px;
-    padding: 64px 32px;
+    padding: 50px 32px;
     max-width: 600px;
-    width: 600px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
     top: 25%;
     margin: 0 auto;
-    height: ${props => props.open ? '258px' : '0px'};
+    height: auto;
     transition: height 0.2s ease-in-out;
 
     & > h2 {
-      width: 377px;
+      width: 100%;
       text-align: center;
       opacity: ${props => props.open ? '1' : '0'};
       transition: opacity 1s ease-in-out;
@@ -178,11 +177,12 @@ const ModalContainer = styled.div`
       margin-top: 24px;
       visibility: ${props => props.open ? '1' : '0'};
       transition: opacity 1s ease-in-out;
+      width: 50%;
       
       & > button {
-        margin: 0 8px;
+        margin: 4px 0px;
         padding: 8px 16px;
-        width: 174px;
+        width: 100%;
         box-shadow: none;
         border: none;
         font-family: var(--Poppins);
