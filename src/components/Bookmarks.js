@@ -59,7 +59,7 @@ const Bookmarks = props => {
   const updateBookmar = e => {
     e.preventDefault();
 
-    bookMarkService.updateBookmark(modalUpdate.id, bookmark)
+    bookMarkService.updateBookmark(modalUpdate.id, { name: bookmark })
       .then(response => {
         viewBookmarks(userId);
         updateModal();

@@ -140,9 +140,13 @@ const CardContainer = styled.div`
 
     & > #bookmarks {
       margin-left: 32px;
+
+      & > svg > path {
+        fill: ${props => props.bookmark ? "var(--Action)" : "var(--BK-Main)"};
+      }
     }
   }
-`
+`;
 
 const ModalContainer = styled.div`
   background-color: var(--BK-Main-50);

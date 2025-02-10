@@ -12,9 +12,9 @@
 
 ### Articles in group bookmaks
 
-- [ ] Mark Article to group Bookmarks
-- [ ] View Article in group bookmarks
+- [x] Mark Article to group Bookmarks
 - [ ] Unmark Article in group Bookmarks
+- [ ] View Article in group Bookmarks
 
 ---
 

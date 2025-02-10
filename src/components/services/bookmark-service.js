@@ -19,8 +19,8 @@ class BookmarkService {
       .then(response => response.data);
   }
 
-  updateBookmark = (id, name) => {
-    return this.service.put(`/api/update-bookmark?id=${id}`, { name: name })
+  updateBookmark = (id, update) => {
+    return this.service.put(`/api/update-bookmark?id=${id}`, update)
       .then(response => response.data);
   }
 

@@ -3,9 +3,10 @@ import styled from "styled-components";
 const ModalBookmarkContainer = styled.div`
   background-color: var(--BK-Main-50);
   width: 100%;
-  height: calc(100vh - 71px);
+  height: 100%;
   position: absolute;
   top: 0;
+  z-index: 2;
   visibility: ${props => props.open ? 'visibile' : "hidden"};
 
   & > #modal-bookmarks {

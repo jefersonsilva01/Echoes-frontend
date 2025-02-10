@@ -40,10 +40,11 @@ const Card = (props) => {
       .catch(error => console.log(error.message));
   }
 
-
   return (
     <>
-      <CardContainer key={props.id}>
+      <CardContainer
+        key={props.id}
+        bookmark={props.user.bookmarks.includes(props.id, 0)}>
         <Link to={{ pathname: "/article", state: { content } }}>
           <div id="profile-data">
             <img src={props.user.imgPath} alt="Avatar" />
@@ -73,9 +74,26 @@ const Card = (props) => {
             <span>{props.content.likes}</span>
           </div>
           <div id="bookmarks">
-            <svg onClick={(e) => { e.preventDefault(); openModalBookmark() }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M5 2H19C19.5523 2 20 2.44772 20 3V22.1433C20 22.4194 19.7761 22.6434 19.5 22.6434C19.4061 22.6434 19.314 22.6168 19.2344 22.5669L12 18.0313L4.76559 22.5669C4.53163 22.7136 4.22306 22.6429 4.07637 22.4089C4.02647 22.3293 4 22.2373 4 22.1433V3C4 2.44772 4.44772 2 5 2ZM18 4H6V19.4324L12 15.6707L18 19.4324V4Z"></path></svg>
+            {
+              props.user.bookmarks.includes(props.id, 0)
+                ? (
+                  <svg
+                    onClick={(e) => { e.preventDefault(); removeBookmark() }}
+                    width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 2C4.89543 2 4 2.89543 4 4V21.1369C4 21.9067 4.83335 22.3878 5.50002 22.0029L12 18.25L18.5 22.0029C19.1667 22.3878 20 21.9067 20 21.1369V4C20 2.89543 19.1046 2 18 2H6Z" fill="black" />
+                  </svg>
+                )
+                : (
+                  <svg
+                    onClick={(e) => { e.preventDefault(); openModalBookmark() }}
+                    width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M18.5 22.0029L12 18.25L5.50002 22.0029C4.83335 22.3878 4 21.9067 4 21.1369V4C4 2.89543 4.89543 2 6 2H18C19.1046 2 20 2.89543 20 4V21.1369C20 21.9067 19.1667 22.3878 18.5 22.0029ZM13 16.518C12.3812 16.1607 11.6188 16.1607 11 16.518L6 19.4048V4H18V19.4048L13 16.518Z" fill="black" />
+                  </svg>
+                )
+            }
             <span>{props.content.bookmarks}</span>
           </div>
+
           {
             props.edit ? (
               <div id="edit-icons">
@@ -110,6 +128,7 @@ const Card = (props) => {
       </ModalContainer>
 
       <ModalBookmarks
+        card={props.id}
         user={props.user._id}
         open={modalBookmark}
         openModal={openModalBookmark} />

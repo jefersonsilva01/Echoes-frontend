@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { ModalBookmarkContainer } from "./styles/ModalBookMarksStyel";
 import BookmarkService from "./services/bookmark-service";
+import UserService from "./services/user-service";
+import ArticleService from "./services/article-service";
 
 const bookmarkService = new BookmarkService();
+const userService = new UserService();
+const articleService = new ArticleService();
 
 const ModalBookmarks = (props) => {
   const [modal, setModalStatus] = useState(false);
   const [bookmarks, setBookmarks] = useState([]);
+  const [bookmarkOption, setBookmarkOption] = useState("")
 
   const { user } = props;
 
@@ -14,6 +19,21 @@ const ModalBookmarks = (props) => {
 
   const saveArticle = e => {
     e.preventDefault();
+
+    userService.userUpdate(user, { bookmarks: props.card, add: true })
+      .then(response => response)
+      .catch(error => console.log(error));
+
+    articleService.updateArticle(props.card, { bookmark: true })
+      .then(response => response)
+      .catch(error => console.log(error));
+
+    bookmarkService.updateBookmark(bookmarkOption, { article: props.card, add: true })
+      .then(response => response)
+      .catch(error => console.log(error));
+
+    setModal();
+    window.location.reload();
   }
 
   const viewBookmarks = (user) => {
@@ -24,13 +44,16 @@ const ModalBookmarks = (props) => {
       .catch(error => console.log(error));
   }
 
+  const handleChange = e => {
+    const { value } = e.target;
+    setBookmarkOption(value);
+  }
+
   useEffect(() => {
     viewBookmarks(user);
     setModalStatus(props.open);
 
   }, [props.open, user]);
-
-  console.log(bookmarks);
 
   return (
     <ModalBookmarkContainer open={modal}>
@@ -38,12 +61,12 @@ const ModalBookmarks = (props) => {
         <form onSubmit={saveArticle}>
           {
             bookmarks.map((element, index) => (
-              <label key={index} htmlFor={element.name}>
+              <label key={index}>
                 <input
-                  id={element._id}
+                  onChange={handleChange}
                   type="radio"
-                  name={element.name}
-                  value={element.name}
+                  name="bookmark"
+                  value={element._id}
                 /> {element.name}
               </label>
             ))
