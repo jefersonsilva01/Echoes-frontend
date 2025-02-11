@@ -13,6 +13,7 @@ import MyArticles from './components/MyArticles';
 import Article from './components/Article';
 import EditArticle from './components/EditArticle';
 import Bookmarks from './components/Bookmarks';
+import BookmarkArticles from './components/BookmarkArticles';
 
 import ProtectedRoute from './components/auth/protected-route';
 import AuthService from './components/auth/auth-service';
@@ -79,6 +80,7 @@ const App = () => {
             <ProtectedRoute
               exact path="/my-articles"
               user={loggedInUser}
+              getUser={getTheUser}
               component={MyArticles} />
 
             <ProtectedRoute
@@ -101,6 +103,12 @@ const App = () => {
               user={loggedInUser}
               getUser={getTheUser}
               component={Profile} />
+
+            <ProtectedRoute
+              exact path="/bookmarks-articles"
+              user={loggedInUser}
+              getUser={getTheUser}
+              component={BookmarkArticles} />
           </Switch>
         </div>
       )

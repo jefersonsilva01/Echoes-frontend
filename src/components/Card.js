@@ -3,14 +3,17 @@ import { Link } from "react-router-dom";
 import { CardContainer, ModalContainer } from "./styles/CardStyle";
 import ModalBookmarks from './ModalBookmarks';
 import ArticleService from "./services/article-service";
+import UserService from "./services/user-service";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const articleService = new ArticleService();
+const userService = new UserService();
 
 const Card = (props) => {
   const [modalState, setModal] = useState(false);
   const [modalBookmark, setModalBookmark] = useState(false);
   const [removeBookmark, setRemoveBookmark] = useState(false);
+  const [card, setCard] = useState(props.content);
 
   const openModalBookmark = () => setModalBookmark(!modalBookmark);
   const showModal = () => setModal(!modalState);
@@ -42,11 +45,36 @@ const Card = (props) => {
       .catch(error => console.log(error.message));
   }
 
+  const likeArticle = (articleId, userId) => {
+    articleService.updateArticle(articleId, { like: "add" })
+      .then(response => setCard(response))
+      .catch(error => console.log(error));
+
+    userService.userUpdate(userId, { addLike: articleId })
+      .then(response => {
+        props.getUser(response);
+      })
+      .catch(error => console.log(error));
+  }
+
+  const unlikeArticle = (articleId, userId) => {
+    articleService.updateArticle(articleId, { like: "remove" })
+      .then(response => setCard(response))
+      .catch(error => console.log(error));
+
+    userService.userUpdate(userId, { removeLike: articleId })
+      .then(response => {
+        props.getUser(response);
+      })
+      .catch(error => console.log(error));
+  }
+
   return (
     <>
       <CardContainer
         key={props.id}
-        bookmark={props.user.bookmarks.includes(props.id, 0).toString()}>
+        bookmark={props.user.bookmarks.includes(props.id, 0).toString()}
+        like={props.user.likes.includes(card._id, 0).toString()}>
         <Link to={{ pathname: "/article", state: { content } }}>
           <div id="profile-data">
             <img src={props.user.imgPath} alt="Avatar" />
@@ -72,7 +100,22 @@ const Card = (props) => {
 
         <div id="social-icons">
           <div id="heart">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12.001 4.52853C14.35 2.42 17.98 2.49 20.2426 4.75736C22.5053 7.02472 22.583 10.637 20.4786 12.993L11.9999 21.485L3.52138 12.993C1.41705 10.637 1.49571 7.01901 3.75736 4.75736C6.02157 2.49315 9.64519 2.41687 12.001 4.52853ZM18.827 6.1701C17.3279 4.66794 14.9076 4.60701 13.337 6.01687L12.0019 7.21524L10.6661 6.01781C9.09098 4.60597 6.67506 4.66808 5.17157 6.17157C3.68183 7.66131 3.60704 10.0473 4.97993 11.6232L11.9999 18.6543L19.0201 11.6232C20.3935 10.0467 20.319 7.66525 18.827 6.1701Z"></path></svg>
+            {
+              props.user.likes.includes(card._id, 0)
+                ? (
+                  <svg
+                    onClick={() => { unlikeArticle(props.content._id, props.content.userId) }}
+                    width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 5.12153L11.8635 4.99264C10.7014 3.85554 9.14236 3.21536 7.5165 3.20764C5.92264 3.20764 4.39391 3.84008 3.2659 4.96612C2.13789 6.09216 1.50278 7.61979 1.5 9.21364C1.5 12.4476 2.6865 13.9911 7.989 18.1806L10.7737 20.3421C11.4953 20.9022 12.5047 20.9022 13.2263 20.3421L16.011 18.1806C21.3135 13.9911 22.5 12.4476 22.5 9.21364C22.4972 7.61979 21.8621 6.09216 20.7341 4.96612C19.6061 3.84008 18.0773 3.20764 16.4835 3.20764C14.8576 3.21536 13.2986 3.85554 12.1365 4.99264L12 5.12153Z" fill="black" />
+                  </svg>
+                )
+                : (
+                  <svg
+                    onClick={() => { likeArticle(props.content._id, props.content.userId) }}
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12.001 4.52853C14.35 2.42 17.98 2.49 20.2426 4.75736C22.5053 7.02472 22.583 10.637 20.4786 12.993L11.9999 21.485L3.52138 12.993C1.41705 10.637 1.49571 7.01901 3.75736 4.75736C6.02157 2.49315 9.64519 2.41687 12.001 4.52853ZM18.827 6.1701C17.3279 4.66794 14.9076 4.60701 13.337 6.01687L12.0019 7.21524L10.6661 6.01781C9.09098 4.60597 6.67506 4.66808 5.17157 6.17157C3.68183 7.66131 3.60704 10.0473 4.97993 11.6232L11.9999 18.6543L19.0201 11.6232C20.3935 10.0467 20.319 7.66525 18.827 6.1701Z"></path></svg>
+                )
+            }
             <span>{props.content.likes}</span>
           </div>
           <div id="bookmarks">

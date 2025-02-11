@@ -1,28 +1,38 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { MyArticlesContrainer } from './styles/MyArticlesStyle'
-
-import Card from './Card';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
+import { BookmarkArticlesContainer } from './styles/BookmarkArticlesStyle';
 import ArticleService from "./services/article-service";
+import Card from './Card';
 
 const articleService = new ArticleService();
 
-const MyArticles = (props) => {
+const BookmarkArticles = props => {
+  const location = useLocation();
+  const { element } = location.state || {};
+
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
     articleService.myArticles(props.loggedInUser._id)
       .then(response => {
-        setArticles(response)
+        const newArr = []
+        response.map((item) => {
+          if (element.articles.includes(item._id)) {
+            newArr.push(item);
+          }
+          return "";
+        })
+        setArticles(newArr);
       })
       .catch(error => console.log(error.message));
-  }, [props.loggedInUser]);
+  }, [props.loggedInUser, element]);
 
   return (
-    <MyArticlesContrainer>
+    <BookmarkArticlesContainer>
       {
         articles.length > 0 ? (
-          <div id="my-articles-cards">
+          <div id="bookmark-articles-cards">
             {
               articles.map((element, index) => (
                 <Card
@@ -43,8 +53,8 @@ const MyArticles = (props) => {
           </div>
         )
       }
-    </MyArticlesContrainer>
-  );
+    </BookmarkArticlesContainer>
+  )
 }
 
-export default MyArticles;
+export default BookmarkArticles;

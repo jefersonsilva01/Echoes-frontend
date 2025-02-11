@@ -145,6 +145,11 @@ const CardContainer = styled.div`
         fill: ${props => props.bookmark === "true" ? "var(--Action)" : "var(--BK-Main)"};
       }
     }
+
+    & > #heart > svg > path {
+        fill: ${props => props.like === "true" ? "var(--Alert)" : "var(--BK-Main)"};
+      }
+    }
   }
 `;
 

@@ -17,7 +17,12 @@ const BookmarksContainer = styled.section`
     justify-content: center;
   }
 
-  & > .bookmark {
+  & > a {
+    text-decoration: none;
+    color: var(--BK-Main);
+  }
+
+  & > a .bookmark, .bookmark {
     cursor: pointer;    
     border-radius: 8px;
     padding: 8px;
