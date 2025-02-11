@@ -29,23 +29,21 @@ const App = () => {
 
     if (userData) {
       setLoggedInUser(JSON.parse(userData));
-      setLoading(false)
-    } else {
-      // Se não houver dados no URL, verifica via serviço de autenticação
-      service.verify()
-        .then(response => {
-          if (JSON.stringify(loggedInUser) !== JSON.stringify(response)) {
-            setLoggedInUser(response);
-          }
-        })
-        .catch(err => {
-          if (loggedInUser !== false) {
-            setLoggedInUser(false);
-          }
-        })
-        .finally(() => setLoading(false))
+      setLoading(false);
+      return;
     }
-  }, [loggedInUser]);
+
+    service.verify()
+      .then(response => {
+        setLoggedInUser(prevUser =>
+          JSON.stringify(prevUser) !== JSON.stringify(response) ? response : prevUser
+        );
+      })
+      .catch(() => {
+        setLoggedInUser(false);
+      })
+      .finally(() => setLoading(false));
+  }, []);
 
   const getTheUser = (userObj) => {
     setLoggedInUser(userObj);

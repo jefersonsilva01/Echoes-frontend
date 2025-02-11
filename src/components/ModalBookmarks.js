@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { ModalBookmarkContainer } from "./styles/ModalBookMarksStyel";
 import BookmarkService from "./services/bookmark-service";
 import UserService from "./services/user-service";
@@ -11,11 +11,11 @@ const articleService = new ArticleService();
 const ModalBookmarks = (props) => {
   const [modal, setModalStatus] = useState(false);
   const [bookmarks, setBookmarks] = useState([]);
-  const [bookmarkOption, setBookmarkOption] = useState("")
+  const [bookmarkOption, setBookmarkOption] = useState("");
 
   const { user } = props;
 
-  const setModal = () => props.openModal();
+  const setModal = useCallback(() => props.openModal(), [props]);
 
   const saveArticle = e => {
     e.preventDefault();
@@ -36,6 +36,24 @@ const ModalBookmarks = (props) => {
     window.location.reload();
   }
 
+  const removeBookmark = useCallback(() => {
+    userService.userUpdate(user, { bookmarks: props.card, remove: true })
+      .then(response => response)
+      .catch(error => console.log(error));
+
+    articleService.updateArticle(props.card, { unBookmark: true })
+      .then(response => response)
+      .catch(error => console.log(error));
+
+    bookmarkService.updateBookmark(bookmarkOption, { article: props.card, remove: true })
+      .then(response => response)
+      .catch(error => console.log(error));
+
+    setModal();
+    props.unBookmarkFunction(!props.remove);
+    window.location.reload();
+  }, [bookmarkOption, user, setModal, props])
+
   const viewBookmarks = (user) => {
     bookmarkService.bookmarks(user)
       .then(response => {
@@ -52,8 +70,9 @@ const ModalBookmarks = (props) => {
   useEffect(() => {
     viewBookmarks(user);
     setModalStatus(props.open);
+    if (props.remove) removeBookmark();
 
-  }, [props.open, user]);
+  }, [user, props, removeBookmark]);
 
   return (
     <ModalBookmarkContainer open={modal}>

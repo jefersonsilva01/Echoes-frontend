@@ -142,7 +142,7 @@ const CardContainer = styled.div`
       margin-left: 32px;
 
       & > svg > path {
-        fill: ${props => props.bookmark ? "var(--Action)" : "var(--BK-Main)"};
+        fill: ${props => props.bookmark === "true" ? "var(--Action)" : "var(--BK-Main)"};
       }
     }
   }

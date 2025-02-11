@@ -13,7 +13,7 @@
 ### Articles in group bookmaks
 
 - [x] Mark Article to group Bookmarks
-- [ ] Unmark Article in group Bookmarks
+- [x] Unmark Article in group Bookmarks
 - [ ] View Article in group Bookmarks
 
 ---

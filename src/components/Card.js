@@ -5,12 +5,16 @@ import ModalBookmarks from './ModalBookmarks';
 import ArticleService from "./services/article-service";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
+const articleService = new ArticleService();
+
 const Card = (props) => {
   const [modalState, setModal] = useState(false);
   const [modalBookmark, setModalBookmark] = useState(false);
+  const [removeBookmark, setRemoveBookmark] = useState(false);
 
   const openModalBookmark = () => setModalBookmark(!modalBookmark);
   const showModal = () => setModal(!modalState);
+  const unBookmark = () => setRemoveBookmark(!removeBookmark);
 
   const dataStr = props.content.createdAt;
   const date = new Date(dataStr);
@@ -25,8 +29,6 @@ const Card = (props) => {
   const newDate = `${mount}, ${day}-${year}`
 
   const content = { ...props.content, newDate }
-
-  const articleService = new ArticleService();
 
   const history = useHistory();
 
@@ -44,7 +46,7 @@ const Card = (props) => {
     <>
       <CardContainer
         key={props.id}
-        bookmark={props.user.bookmarks.includes(props.id, 0)}>
+        bookmark={props.user.bookmarks.includes(props.id, 0).toString()}>
         <Link to={{ pathname: "/article", state: { content } }}>
           <div id="profile-data">
             <img src={props.user.imgPath} alt="Avatar" />
@@ -78,7 +80,7 @@ const Card = (props) => {
               props.user.bookmarks.includes(props.id, 0)
                 ? (
                   <svg
-                    onClick={(e) => { e.preventDefault(); removeBookmark() }}
+                    onClick={(e) => { e.preventDefault(); unBookmark() }}
                     width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M6 2C4.89543 2 4 2.89543 4 4V21.1369C4 21.9067 4.83335 22.3878 5.50002 22.0029L12 18.25L18.5 22.0029C19.1667 22.3878 20 21.9067 20 21.1369V4C20 2.89543 19.1046 2 18 2H6Z" fill="black" />
                   </svg>
@@ -131,6 +133,8 @@ const Card = (props) => {
         card={props.id}
         user={props.user._id}
         open={modalBookmark}
+        remove={removeBookmark}
+        unBookmarkFunction={unBookmark}
         openModal={openModalBookmark} />
     </>
   )
