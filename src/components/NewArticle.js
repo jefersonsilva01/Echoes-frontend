@@ -79,7 +79,7 @@ const NewArticle = props => {
           placeholder="Description"
           rows="3"
           cols="50"
-          maxLength="180"
+          maxLength="500"
           name="description" />
 
         <label

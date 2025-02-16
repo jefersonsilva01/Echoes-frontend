@@ -3,7 +3,7 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import { BookmarkArticlesContainer } from './styles/BookmarkArticlesStyle';
 import ArticleService from "./services/article-service";
-import Card from './Card';
+import CardsDisplayContainer from "./CardsDisplay";
 
 const articleService = new ArticleService();
 
@@ -12,6 +12,9 @@ const BookmarkArticles = props => {
   const { element } = location.state || {};
 
   const [articles, setArticles] = useState([]);
+  const [bookmarks, setBookmarks] = useState(element.articles);
+
+  const updateArticles = () => { setBookmarks(bookmarks) };
 
   useEffect(() => {
     articleService.myArticles(props.loggedInUser._id)
@@ -33,17 +36,12 @@ const BookmarkArticles = props => {
       {
         articles.length > 0 ? (
           <div id="bookmark-articles-cards">
-            {
-              articles.map((element, index) => (
-                <Card
-                  getUser={props.getUser}
-                  key={index}
-                  content={element}
-                  id={element._id}
-                  edit={element.userId === props.loggedInUser._id ? true : false}
-                  user={props.loggedInUser} />
-              ))
-            }
+            <CardsDisplayContainer
+              updateBookMarks={updateArticles}
+              bookmarks={bookmarks}
+              user={props.loggedInUser}
+              getUser={props.getUser}
+              allCards={articles} />
           </div>
         ) : (
           <div id="empty-articles">

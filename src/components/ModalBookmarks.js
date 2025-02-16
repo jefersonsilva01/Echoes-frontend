@@ -1,61 +1,47 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ModalBookmarkContainer } from "./styles/ModalBookMarksStyel";
-import BookmarkService from "./services/bookmark-service";
 import UserService from "./services/user-service";
 import ArticleService from "./services/article-service";
+import BookmarkService from "./services/bookmark-service";
 
 const bookmarkService = new BookmarkService();
 const userService = new UserService();
 const articleService = new ArticleService();
 
 const ModalBookmarks = (props) => {
-  const [modal, setModalStatus] = useState(false);
   const [bookmarks, setBookmarks] = useState([]);
   const [bookmarkOption, setBookmarkOption] = useState("");
 
   const { user } = props;
 
-  const setModal = useCallback(() => props.openModal(), [props]);
-
   const saveArticle = e => {
     e.preventDefault();
 
-    userService.userUpdate(user, { bookmarks: props.card, add: true })
+    bookmarkService.updateBookmark(bookmarkOption, { article: props.content._id, add: true })
       .then(response => response)
       .catch(error => console.log(error));
 
-    articleService.updateArticle(props.card, { bookmark: true })
-      .then(response => response)
+    articleService.updateArticle(props.content._id, { bookmark: true })
+      .then(response => {
+        props.cards.map((item, index) => {
+          if (item._id === props.content._id) {
+            props.cards[index].bookmarks += 1
+            props.cards[index].userId.bookmarks.push(props.content._id)
+          };
+          return props.update(props.cards);
+        })
+      })
       .catch(error => console.log(error));
 
-    bookmarkService.updateBookmark(bookmarkOption, { article: props.card, add: true })
-      .then(response => response)
+    userService.userUpdate(user._id, { bookmarks: props.content._id, add: true })
+      .then(response => props.getUser(response))
       .catch(error => console.log(error));
 
-    setModal();
-    window.location.reload();
+    props.openModal();
   }
 
-  const removeBookmark = useCallback(() => {
-    userService.userUpdate(user, { bookmarks: props.card, remove: true })
-      .then(response => response)
-      .catch(error => console.log(error));
-
-    articleService.updateArticle(props.card, { unBookmark: true })
-      .then(response => response)
-      .catch(error => console.log(error));
-
-    bookmarkService.updateBookmark(bookmarkOption, { article: props.card, remove: true })
-      .then(response => response)
-      .catch(error => console.log(error));
-
-    setModal();
-    props.unBookmarkFunction(!props.remove);
-    window.location.reload();
-  }, [bookmarkOption, user, setModal, props])
-
   const viewBookmarks = (user) => {
-    bookmarkService.bookmarks(user)
+    bookmarkService.bookmarks(user?._id)
       .then(response => {
         setBookmarks(response)
       })
@@ -69,13 +55,10 @@ const ModalBookmarks = (props) => {
 
   useEffect(() => {
     viewBookmarks(user);
-    setModalStatus(props.open);
-    if (props.remove) removeBookmark();
-
-  }, [user, props, removeBookmark]);
+  }, [user]);
 
   return (
-    <ModalBookmarkContainer open={modal}>
+    <ModalBookmarkContainer open={props.open}>
       <div id="modal-bookmarks">
         <form onSubmit={saveArticle}>
           {
@@ -91,7 +74,7 @@ const ModalBookmarks = (props) => {
             ))
           }
 
-          <button id="cancel" onClick={(e) => { e.preventDefault(); setModal() }}>Cancel</button>
+          <button id="cancel" onClick={(e) => { e.preventDefault(); props.openModal() }}>Cancel</button>
           <button id="confirm" type="submit">Save</button>
         </form>
       </div>

@@ -18,6 +18,8 @@ const Nav = (props) => {
     setIsMenuOpen(!isMenuOpen);
   }
 
+
+
   return (
     <>
       <NavBar>
@@ -27,9 +29,9 @@ const Nav = (props) => {
               <Link id="logo" to="/">
                 <img src="./assets/Logo.png" alt="Logo Echoes" />
               </Link>
-              <ListItem>
+              {/* <ListItem>
                 <StyledLink to="/about">About</StyledLink>
-              </ListItem>
+              </ListItem> */}
               <ListItem>
                 <StyledLink smooth to="/#fresh">Fresh</StyledLink>
               </ListItem>
@@ -85,9 +87,9 @@ const Nav = (props) => {
           props.user !== undefined ? (
             <div id="menu-loggedin">
               <ul>
-                <li>
+                {/* <li>
                   <StyledLink to="/about" onClick={showHideMenu}>About</StyledLink>
-                </li>
+                </li> */}
                 <li>
                   <StyledLink smooth to="/#fresh" onClick={showHideMenu}>Fresh</StyledLink>
                 </li>
@@ -122,9 +124,9 @@ const Nav = (props) => {
           ) : (
             <div id="menu-loggedout">
               <ul>
-                <li>
+                {/* <li>
                   <StyledLink to="/about" onClick={showHideMenu}>About</StyledLink>
-                </li>
+                </li> */}
                 <li>
                   <StyledLink smooth to="/#fresh" onClick={showHideMenu}>Fresh</StyledLink>
                 </li>

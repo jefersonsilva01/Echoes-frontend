@@ -14,6 +14,11 @@ class UserService {
       .then(response => response.data);
   }
 
+  // userBookmark = (id, update) => {
+  //   return this.service.put(`/api/user/bookmark?id=${id}`, update)
+  //     .then(response => response.data);
+  // }
+
   uploadImage = (image) => {
     return this.service.post('/api/upload', image)
       .then(response => response.data);

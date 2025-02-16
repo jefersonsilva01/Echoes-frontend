@@ -64,7 +64,6 @@ const NewArticle = props => {
       return;
     }
 
-    console.log({ ...article, [name]: value })
     setArticle({ ...article, [name]: value })
   };
 

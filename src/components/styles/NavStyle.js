@@ -152,6 +152,10 @@ const Menu = styled.div`
   transition: visibility 0.3s ease-in-out;
   ${'' /* height: calc(100vh - 72px); */}
 
+  li > a[href="/"] {
+    display: none;
+  }
+
   & > #menu-loggedout,
   & > #menu-loggedin {
     background-color: var(--WT-Main);
@@ -164,14 +168,14 @@ const Menu = styled.div`
     right: 0;
     margin-right: 2%;
     ${'' /* overflow: hidden; */}
-    height: ${props => props.open ? '200px' : '0px'};
+    height: ${props => props.open ? '160px' : '0px'};
     transition: height 0.3s ease-in-out;
   };
 
   & > #menu-loggedout > ul,
   & > #menu-loggedin > ul {
     list-style: none;
-    height: 100%;
+    height: fit-content;
     opacity: ${props => props.open ? '1' : '0'};
     transition: all 0.3s ease-in-out;
   };
@@ -194,14 +198,17 @@ const Menu = styled.div`
 
   & > #menu-loggedout > ul > li:last-child,
   & > #menu-loggedin > ul > li:last-child,
-  & > #menu-loggedin > ul > li:nth-child(1),
-  & > #menu-loggedin > ul > li:nth-child(2),
-  & > #menu-loggedin > ul > li:nth-child(3) {
+  & > #menu-loggedin > ul > li:nth-child(1), 
+  & > #menu-loggedin > ul > li:nth-child(2) {
     display: none;
   };
 
   // Tablet 
   @media(max-width: 1040px){
+    li > a[href="/"] {
+      display: block;
+    }
+
     visibility: ${props => props.open ? 'visible' : 'hidden'};
 
     & > #menu-loggedin > ul > li:nth-child(1),
@@ -211,11 +218,11 @@ const Menu = styled.div`
     };
 
     & > #menu-loggedout {
-      height: ${props => props.open ? '190px' : '0px'};
+      height: ${props => props.open ? '150px' : '0px'};
     }
 
     & > #menu-loggedin {
-      height: ${props => props.open ? '290px' : '0px'};
+      height: ${props => props.open ? '250px' : '0px'};
     }
   }
 
@@ -231,11 +238,11 @@ const Menu = styled.div`
     };
 
     & > #menu-loggedout {
-      height: ${props => props.open ? '250px' : '0px'};
+      height: ${props => props.open ? '220px' : '0px'};
     }
 
     & > #menu-loggedin {
-      height: ${props => props.open ? '350px' : '0px'};
+      height: ${props => props.open ? '310px' : '0px'};
     }
 
     & > #menu-loggedout > ul > li:last-child,

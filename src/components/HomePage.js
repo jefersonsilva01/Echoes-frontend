@@ -16,7 +16,11 @@ const Home = (props) => {
       }
       <Hero />
       <Fresh />
-      <Trend user={props.loggedInUser} />
+      {
+        props.loggedInUser
+          ? (<Trend user={props.loggedInUser} getUser={props.getUser} />)
+          : (<Trend />)
+      }
       {
         props.loggedInUser ? ("") :
           (<>

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import CardsDisplayContainer from "./CardsDisplay";
 import { MyArticlesContrainer } from './styles/MyArticlesStyle'
 
-import Card from './Card';
 import ArticleService from "./services/article-service";
 
 const articleService = new ArticleService();
@@ -23,17 +23,10 @@ const MyArticles = (props) => {
       {
         articles.length > 0 ? (
           <div id="my-articles-cards">
-            {
-              articles.map((element, index) => (
-                <Card
-                  getUser={props.getUser}
-                  key={index}
-                  content={element}
-                  id={element._id}
-                  edit={element.userId === props.loggedInUser._id ? true : false}
-                  user={props.loggedInUser} />
-              ))
-            }
+            <CardsDisplayContainer
+              user={props.loggedInUser}
+              getUser={props.getUser}
+              allCards={articles} />
           </div>
         ) : (
           <div id="empty-articles">

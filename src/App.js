@@ -70,6 +70,7 @@ const App = () => {
             <ProtectedRoute
               exact path="/"
               user={loggedInUser}
+              getUser={getTheUser}
               component={HomePage} />
 
             <ProtectedRoute
@@ -86,6 +87,7 @@ const App = () => {
             <ProtectedRoute
               exact path="/article"
               user={loggedInUser}
+              getUser={getTheUser}
               component={Article} />
 
             <ProtectedRoute
@@ -138,7 +140,7 @@ const App = () => {
 
             <Route
               path="/article"
-              component={HomePage} />
+              component={Article} />
 
             <Route
               path="/edit-article"

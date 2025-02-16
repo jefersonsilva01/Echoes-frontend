@@ -22,7 +22,8 @@
 
 - [x] Like
 - [x] Deslike
-- [ ] Create seeds
+- [x] Create seeds
+- [x] Show Trends
 - [ ] Show Fresh
-- [ ] Show Trends
+- [ ] Show main article
 - [ ] Search bar

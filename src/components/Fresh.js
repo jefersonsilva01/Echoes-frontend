@@ -1,6 +1,5 @@
 import React from "react";
 import { FreshSection } from "./styles/CarrouselStyle";
-import Card from "./Card2";
 
 const Carrousel = () => {
   return (
@@ -9,10 +8,7 @@ const Carrousel = () => {
         <h2>Fresh</h2>
 
         <div id="carrousel-container">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+
         </div>
       </div>
     </FreshSection>

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const ArticleContainer = styled.section`
   position: relative;
-  top: 71px;
+  top: 58px;
   background-color: var(--WT-Main);
   min-height: calc(100vh - 71px);
   padding-bottom: 32px;
@@ -55,6 +55,14 @@ const ArticleContainer = styled.section`
           & > svg {
             margin-right: 8px;
           }
+        }
+
+        & > #bookmarks > svg > path {
+          fill: ${props => props.bookmark === "true" ? "var(--Action)" : "var(--BK-Main)"};
+        }
+
+        & > #heart > svg > path {
+          fill: ${props => props.like === "true" ? "var(--Alert)" : "var(--BK-Main)"};
         }
       }
     }
