@@ -150,7 +150,7 @@ const SocialIcons = (props) => {
           </div>
         ) : ("")
       }
-    </SocialIconsContainer >
+    </SocialIconsContainer>
   )
 }
 

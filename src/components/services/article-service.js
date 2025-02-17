@@ -24,6 +24,11 @@ class ArticleService {
       .then(response => response.data);
   }
 
+  mainArticle = () => {
+    return this.service.get("/api/main-article")
+      .then(response => response.data);
+  }
+
   uploadImage = (image) => {
     return this.service.post('/api/upload', image)
       .then(response => response.data);
@@ -33,11 +38,6 @@ class ArticleService {
     return this.service.put(`/api/update-article?id=${id}`, article)
       .then(response => response.data);
   }
-
-  // updateArticleBookmark = (id, article) => {
-  //   return this.service.put(`/api/update-article/bookmark?id=${id}`, article)
-  //     .then(response => response.data);
-  // }
 
   deleteArticle = (id) => {
     return this.service.delete(`/api/article/delete?id=${id}`)

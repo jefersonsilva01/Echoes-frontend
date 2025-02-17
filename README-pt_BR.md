@@ -24,6 +24,8 @@
 - [x] Deslike
 - [x] Create seeds
 - [x] Show Trends
+- [x] Show main article
+- [ ] Show local date
 - [ ] Show Fresh
-- [ ] Show main article
 - [ ] Search bar
+- [ ] About
