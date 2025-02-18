@@ -25,7 +25,10 @@
 - [x] Create seeds
 - [x] Show Trends
 - [x] Show main article
-- [ ] Show local date
-- [ ] Show Fresh
+- [x] Show local date
+- [x] Show Fresh
 - [ ] Search bar
+- [ ] Production
+- [ ] Doc Pt_BR
+- [ ] Doc En_US
 - [ ] About

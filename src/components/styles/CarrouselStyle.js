@@ -15,7 +15,7 @@ const FreshSection = styled.section`
 
     &::before,
     &::after {
-      z-index: 1;
+      z-index: 2;
       content: '';
       position: absolute;
       width: 2vw;

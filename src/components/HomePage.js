@@ -15,7 +15,10 @@ const Home = (props) => {
         props.loggedInUser ? ("") : (<Nav />)
       }
       <Hero />
-      <Fresh />
+      {props.loggedInUser
+        ? (<Fresh user={props.loggedInUser} getUser={props.getUser} />)
+        : (<Fresh />)
+      }
       {
         props.loggedInUser
           ? (<Trend user={props.loggedInUser} getUser={props.getUser} />)
