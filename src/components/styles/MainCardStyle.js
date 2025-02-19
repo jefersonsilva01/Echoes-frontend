@@ -20,8 +20,6 @@ const MainCardContainer = styled.div`
     overflow: hidden;
     border-radius: 12px;
     margin-right: 32px;
-    width: fit-content;
-    height: fit-content;
 
     // Tablet
     @media(max-width: 1040px) {
@@ -39,7 +37,7 @@ const MainCardContainer = styled.div`
   & > #trend-news-img > a {
     background-image: ${props => props.image ? `url(${props.image})` : "none"};
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: cover;
     background-position: center;
     width: 592px;
     height: 369px;

@@ -45,8 +45,12 @@ const ArticleContainer = styled.section`
       & > #social-icons {
         display: flex;
         align-items: center;
-        width: 120px;
+        width: 150px;
         justify-content: space-between;
+
+        & > #heart {
+          margin-right: 16px;
+        }
 
         & > #heart, #bookmarks {
           display: flex;

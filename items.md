@@ -28,7 +28,7 @@
 - [x] Show Fresh
 - [x] Search bar
 - [x] Fix bugs
-- [ ] Create seeds
+- [x] Create seeds
 - [ ] Production
 - [ ] Doc Pt_BR
 - [ ] Doc En_US

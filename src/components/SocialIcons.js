@@ -129,7 +129,7 @@ const SocialIcons = (props) => {
       </div>
 
       {
-        props?.user && props.user._Id === content.userId._Id ? (
+        props?.user && props.user._id === content.userId._id ? (
           <div id="edit-icons">
             <svg
               onClick={() => { props.modalDelete() }}
