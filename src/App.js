@@ -14,6 +14,7 @@ import Article from './components/Article';
 import EditArticle from './components/EditArticle';
 import Bookmarks from './components/Bookmarks';
 import BookmarkArticles from './components/BookmarkArticles';
+import SearchResults from './components/SearchResults'
 
 import ProtectedRoute from './components/auth/protected-route';
 import AuthService from './components/auth/auth-service';
@@ -46,17 +47,11 @@ const App = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  const getTheUser = (userObj) => {
-    setLoggedInUser(userObj);
-  };
+  const getTheUser = (userObj) => setLoggedInUser(userObj);
 
-  useEffect(() => {
-    fetchUser();
-  }, [fetchUser]);
+  useEffect(() => fetchUser(), [fetchUser]);
 
-  if (loading) {
-    return <div>Carregando...</div>;
-  }
+  if (loading) <div>Carregando...</div>;
 
   return (
     (loggedInUser)
@@ -72,6 +67,12 @@ const App = () => {
               user={loggedInUser}
               getUser={getTheUser}
               component={HomePage} />
+
+            <ProtectedRoute
+              exact path="/search-results"
+              user={loggedInUser}
+              getUser={getTheUser}
+              component={SearchResults} />
 
             <ProtectedRoute
               exact path="/new-article"
@@ -114,13 +115,18 @@ const App = () => {
           </Switch>
         </div>
       )
-
       : (
         <div className='App'>
           <Switch>
             <Route
               exact path="/"
               component={HomePage} />
+
+            <Route
+              exact path="/search-results"
+              user={loggedInUser}
+              getUser={getTheUser}
+              component={SearchResults} />
 
             <Route
               exact path="/signup"

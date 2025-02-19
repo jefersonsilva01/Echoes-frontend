@@ -1,5 +1,4 @@
 import React from "react";
-// import React, { useState } from "react";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import { ArticleContainer } from "./styles/ArticleStyle";
 import BtnGoToTop from './BtnGoToTop';

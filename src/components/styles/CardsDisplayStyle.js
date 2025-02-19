@@ -16,6 +16,7 @@ const CardsDisplayStyle = styled.section`
     & > div {
       margin: 0 16px;
     }
+  }
 `;
 
 export { CardsDisplayStyle };

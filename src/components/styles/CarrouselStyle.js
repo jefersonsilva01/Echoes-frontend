@@ -8,10 +8,10 @@ const FreshSection = styled.section`
     background-color: var(--BK-Secundary);
     max-width: 1440px;
     margin: 0 auto;
-    padding: 16px 2% 54px ;
+    padding: 16px 0 32px ;
     overflow: hidden;
     position: relative;
-    height: 632px;
+    height: auto;
 
     &::before,
     &::after {
@@ -37,7 +37,7 @@ const FreshSection = styled.section`
     & > h2 {
       color: var(--WT-Main);
       border-bottom: 3px solid var(--WT-Main-50);
-      padding: 0 0 16px;
+      padding: 0 16px 16px;
       width: 100%;
       margin: 0 auto;
       max-width: 1440px;
@@ -48,8 +48,9 @@ const FreshSection = styled.section`
       justify-content: space-around;
       width: 100%;
       margin: 32px auto 0;
-      position: absolute;
+      position: relative;
       left: 0;
+      height: auto;
 
       // Tablet
       @media (max-width: 1040px) {

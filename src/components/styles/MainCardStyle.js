@@ -8,12 +8,12 @@ const MainCardContainer = styled.div`
 
   // Tablet
   @media(max-width: 1040px) {
-    flex - direction: column;
+    flex-direction: column;
   }
 
   // Mobile
   @media(max-width: 620px) {
-    flex - direction: column;
+    flex-direction: column;
   }
 
   & > #trend-news-img {

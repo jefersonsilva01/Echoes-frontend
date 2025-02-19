@@ -34,6 +34,11 @@ class ArticleService {
       .then(response => response.data);
   }
 
+  searchArticles = (search) => {
+    return this.service.get("/api/search-articles", { params: { search } })
+      .then(response => response.data);
+  }
+
   uploadImage = (image) => {
     return this.service.post('/api/upload', image)
       .then(response => response.data);

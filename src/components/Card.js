@@ -68,17 +68,22 @@ const Card = (props) => {
           <p>{props.content.article.description}</p>
         </Link>
 
-        <SocialIcons
-          cards={props.cards}
-          update={props.update}
-          bookmarks={props.bookmarks}
-          updateBookMarks={props.updateBookMarks}
-          user={props.user}
-          content={props.content}
-          getUser={props.getUser}
-          modalDelete={showDeleteModal}
-          openModal={openModalBookmark}
-        />
+        {props.user
+          ? (
+            <SocialIcons
+              cards={props.cards}
+              update={props.update}
+              bookmarks={props.bookmarks}
+              updateBookMarks={props.updateBookMarks}
+              user={props.user}
+              content={props.content}
+              getUser={props.getUser}
+              modalDelete={showDeleteModal}
+              openModal={openModalBookmark}
+            />
+          )
+          : ("")
+        }
       </CardContainer>
 
       <ModalContainer open={deleteModalState}>
