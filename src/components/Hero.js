@@ -6,9 +6,9 @@ const Hero = props => {
   const [region, setRegion] = useState(null);
 
   useEffect(() => {
-    fetch("https://cors-anywhere.herokuapp.com/https://ipapi.co/json/")
+    fetch("https://ipwho.is/")
       .then(response => response.json())
-      .then(data => setRegion(`${data.country_name} | ${data.city} - ${data.region_code}`))
+      .then(data => setRegion(`${data.country} | ${data.city} - ${data.country_code}`))
       .catch(error => console.error("Erro ao obter localização:", error));
   }, [])
 
