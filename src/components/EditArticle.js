@@ -43,7 +43,6 @@ const NewArticle = props => {
     articleService.updateArticle(content._id, article)
       .then(response => {
         history.push("/my-articles");
-        // window.location.reload();
       })
       .catch(error => console.log(error.message));
   }
