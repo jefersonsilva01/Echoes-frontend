@@ -4,7 +4,7 @@ class ArticleService {
   constructor() {
     let service = axios.create({
       baseURL: process.env.REACT_APP_SERVER_URL,
-      withCredentials: false
+      withCredentials: true
     });
     this.service = service;
   }

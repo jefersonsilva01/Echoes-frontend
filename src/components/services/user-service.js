@@ -4,7 +4,7 @@ class UserService {
   constructor() {
     let service = axios.create({
       baseURL: process.env.REACT_APP_SERVER_URL,
-      withCredentials: false
+      withCredentials: true
     });
     this.service = service;
   }
@@ -13,11 +13,6 @@ class UserService {
     return this.service.put(`/api/user?id=${id}`, update)
       .then(response => response.data);
   }
-
-  // userBookmark = (id, update) => {
-  //   return this.service.put(`/api/user/bookmark?id=${id}`, update)
-  //     .then(response => response.data);
-  // }
 
   uploadImage = (image) => {
     return this.service.post('/api/upload', image)
