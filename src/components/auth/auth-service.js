@@ -29,7 +29,7 @@ class AuthService {
   }
 
   signout = () => {
-    return this.service.post("/auth/signout", {})
+    return this.service.get("/auth/signout", {})
       .then(response => response.data);
   }
 }
