@@ -19,8 +19,6 @@ const SearchResults = props => {
       .catch(err => console.log(err));
   }, [search])
 
-  console.log(cards, props);
-
   return (
     <>
       {props.loggedInUser ? ("") : (<Nav />)}
