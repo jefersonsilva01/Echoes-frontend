@@ -1,70 +1,103 @@
-# Getting Started with Create React App
+<img src="./public/assets/Home - Desktop.png" align="center"/>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# ECHOES Frontend
 
-## Available Scripts
+<details>
+  <summary>
+    <h2>Table of content</h2>
+  </summary>
 
-In the project directory, you can run:
+- [ECHOES Frontend](#echoes-frontend)
+  - [About project](#about-project)
+  - [Layout](#layout)
+    - [📖 For writers](#-for-writers)
+    - [👀 For readers](#-for-readers)
+    - [🔐 Authentication and community](#-authentication-and-community)
+    - [⚡ Extras](#-extras)
+  - [How to run the project](#how-to-run-the-project)
+  - [License](#license)
 
-### `npm start`
+</details>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## About project
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+You can see a version of this readme in Portuguese [here](https://github.com/jefersonsilva01/Echoes-frontend/blob/main/README-pt_BR.md).
 
-### `npm test`
+Echoes is an article publishing platform inspired by Medium, offering an intuitive and dynamic environment for writers to share their ideas and readers to explore quality content. With a minimalist design and advanced features, Echoes allows you to create, edit and format texts fluidly, in addition to providing interactions through likes. The platform also includes an intelligent recommendation system, connecting users to relevant content based on their interests. Developed with modern technologies, Echoes seeks to democratize writing and promote the dissemination of knowledge.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+You can see a demo [here](https://echoes-frontend-ten.vercel.app/).
 
-### `npm run build`
+## Layout
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The project was developed based on the layout created in Figma and can be accessed through [here](https://www.figma.com/design/6sTPbCJrTNIhh6HHbpgtnD/ECHOES?node-id=886-2).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<details>
+Echoes offers a suite of features designed to create a fluid and engaging experience for writers and readers. Here are some of the main features:
+  <summary>
+    <h2>Features</h2>
+  </summary>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 📖 For writers
 
-### `npm run eject`
+- **Advanced text editor** – Allows you to format texts and add images.
+- **Publication** – Publish and edit articles already published.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 👀 For readers
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Likes** – Interact with the authors.
+- **Bookmarking system** – Save articles to read later.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 🔐 Authentication and community
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Registration and login** – Access via email/password or social networks.
+- **User profiles** – Customize photo.
 
-## Learn More
+### ⚡ Extras
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Responsive Design** - The website is fully responsive, ensuring a good browsing experience on mobile devices, tablets and desktops.
+</details>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<details>
+  <summary>
+    <h2>Stack</h2>
+  </summary>
 
-### Code Splitting
+- [x] Figma
+- [x] React
+- [x] Styled Component
+- [x] Javascript
+- [x] NodeJS
+- [x] Express
+- [x] MongoDB
+- [x] Git
+- [x] Github
+- [x] Vercel
+- [x] Google Services
+- [x] Cloudinary
+</details>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## How to run the project
 
-### Analyzing the Bundle Size
+This project is divided into two repositories Backend and Frontend, start [here](https://github.com/jefersonsilva01/Echoes-backend)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+To run this project you can download or fork it to your github account and run the git clone command.
 
-### Making a Progressive Web App
+```shell
+git clone https://github.com/<user>/Echoes-frontend.git
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+After accessing the `./Echoes-frontend` directory and installing the project dependencies, the dependencies can be found through the `package.json` file, once installed the project can be run in development mode.
 
-### Advanced Configuration
+```shell
+cd Echoes-frontend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+npm install
 
-### Deployment
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Access URL: `http://localhost:3000`
 
-### `npm run build` fails to minify
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is under the MIT license. See the file [LICENSE](https://github.com/jefersonsilva01/Echoes-frontend/blob/main/LICENSE) for more details.
