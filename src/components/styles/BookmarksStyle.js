@@ -5,88 +5,96 @@ const BookmarksContainer = styled.section`
   width: 100vw;
   height: fit-content;
   position: relative;
-  display: flex;
   top: 71px;
-  align-items: start;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: start;
   padding: 16px 64px;
 
-  @media(max-width: 1040px){
-    justify-content: center;
-  }
 
-  & > a {
-    text-decoration: none;
-    color: var(--BK-Main);
-  }
 
-  & > a .bookmark, .bookmark {
-    cursor: pointer;    
-    border-radius: 8px;
-    padding: 8px;
-    margin: 0 4px 16px;
-    width: fit-content;
-    height: fit-content;
+  & > #container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-    transition: all 0.3s ease-in-out;
-    position: relative;
+    align-items: start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
 
-    & > .new {
-      fill: var(--BTN);
-      position: absolute;
-      z-index: 3;
-      
-      & > path {
-        fill: var(--Action);
-      }
-    }
-
-    & > .folder > path {
-      fill: var(--BTN);
-      transition: all 0.3s ease-in-out;
-    }
-
-    &:hover {
-      & > .folder > path{
-        fill: var(--BTN-Hover);
-      }
-    }
-
-    & > p {
-      width: 100%;
-      font-size: 1em;
-      font-weight: 500;
-      text-align: center;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-      text-overflow: ellipsis;  
-    }
-
-    & > #edit-icons {
-      position: absolute;
-      display: flex;
-      align-items: center;
+    @media(max-width: 1040px){
       justify-content: center;
+    }
+    
+    & > a {
+      text-decoration: none;
+      color: var(--BK-Main);
+    }
 
-      & > svg {
-        margin: 0 8px;
+    & > a .bookmark, .bookmark {
+      cursor: pointer;    
+      border-radius: 8px;
+      padding: 8px;
+      margin: 0 4px 16px;
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent;
+      transition: all 0.3s ease-in-out;
+      position: relative;
 
+      & > .new {
+        fill: var(--BTN);
+        position: absolute;
+        z-index: 3;
+        
         & > path {
-          transition: all 0.3s ease-in-out;
-        }
-
-        &:nth-child(1):hover > path {
-          fill: var(--Alert);
-        }
-
-        &:nth-child(2):hover > path {
           fill: var(--Action);
+        }
+      }
+
+      & > .folder > path {
+        fill: var(--BTN);
+        transition: all 0.3s ease-in-out;
+      }
+
+      &:hover {
+        & > .folder > path{
+          fill: var(--BTN-Hover);
+        }
+      }
+
+      & > p {
+        width: 100%;
+        font-size: 1em;
+        font-weight: 500;
+        text-align: center;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        text-overflow: ellipsis;  
+      }
+
+      & > #edit-icons {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & > svg {
+          margin: 0 8px;
+
+          & > path {
+            transition: all 0.3s ease-in-out;
+          }
+
+          &:nth-child(1):hover > path {
+            fill: var(--Alert);
+          }
+
+          &:nth-child(2):hover > path {
+            fill: var(--Action);
+          }
         }
       }
     }
