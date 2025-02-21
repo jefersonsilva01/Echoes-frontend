@@ -59,7 +59,7 @@ const FreshSection = styled.section`
 
       // Mobile
       @media (max-width: 620px) {
-        width: fit-content;
+        width: 100%;
       }
 
       & > div {

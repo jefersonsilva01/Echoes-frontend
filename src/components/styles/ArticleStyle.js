@@ -9,8 +9,9 @@ const ArticleContainer = styled.section`
 
   & > #article {
     margin: 0 auto;
-    width: 60%;
-    padding: 56px 8px 0;
+    ${'' /* width: 60%; */}
+    max-width: 800px;
+    padding: 56px 16px 0;
     position: relative;
 
     & > #date {
@@ -42,7 +43,13 @@ const ArticleContainer = styled.section`
       justify-content: space-between;
       align-items: center;
 
+      @media(max-width: 650px) {
+        flex-direction: column;
+        align-items: start;
+      }
+
       & > #social-icons {
+        margin: 8px 0;
         display: flex;
         align-items: center;
         width: 150px;
