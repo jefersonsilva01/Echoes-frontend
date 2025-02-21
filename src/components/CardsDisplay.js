@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { CardsDisplayStyle } from './styles/CardsDisplayStyle';
 import Card from "./Card";
-import "swiper/css"; // Estilos padrão do Swiper
 
 const CardsDisplayContainer = props => {
   const [cards, setCards] = useState([]);
