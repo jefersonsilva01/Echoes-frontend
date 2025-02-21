@@ -103,132 +103,140 @@ const Menu = styled.div`
   z-index: 3;
   position: fixed;
   top: 57px;
-  width: 100vw;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   height: 100vh;
   overflow: hidden;
-  visibility: ${props => props.open && props.user !== undefined ? 'visible' : 'hidden'};
+  visibility: ${props => props.open ? 'visible' : 'hidden'};
   transition: visibility 0.3s ease-in-out;
-  ${'' /* height: calc(100vh - 72px); */}
 
   li > a[href="/"] {
     display: none;
   }
 
-  & > #menu-loggedout,
-  & > #menu-loggedin {
-    background-color: var(--WT-Main);
-    width: fit-content;
-    min-width: 236px;
-    border-radius: 8px;
-    padding: 8px 30px;
-    position: fixed;
-    top: 72px;
-    right: 0;
-    margin-right: 2%;
-    ${'' /* overflow: hidden; */}
-    height: ${props => props.open ? '160px' : '0px'};
-    transition: height 0.3s ease-in-out;
-  };
-
-  & > #menu-loggedout > ul,
-  & > #menu-loggedin > ul {
-    list-style: none;
+  & > #menu-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    position: relative;
+    top: 71px;
     height: fit-content;
-    opacity: ${props => props.open ? '1' : '0'};
-    transition: all 0.3s ease-in-out;
-  };
 
-  & > #menu-loggedout > ul > li,
-  & > #menu-loggedin > ul > li {
-    margin: 8px 0px;
-  };
-
-  & > #menu-loggedout > ul > li > a,
-  & > #menu-loggedin > ul > li > a {
-    
-    color: var(--BK-Main-50);
-  };
-
-  & > #menu-loggedout > ul > li > a:hover,
-  & > #menu-loggedin > ul > li > a:hover {
-    color: var(--BK-Main);
-  };
-
-  & > #menu-loggedout > ul > li:last-child,
-  & > #menu-loggedin > ul > li:last-child,
-  & > #menu-loggedin > ul > li:nth-child(1), 
-  & > #menu-loggedin > ul > li:nth-child(2) {
-    display: none;
-  };
-
-  // Tablet 
-  @media(max-width: 1040px){
-    li > a[href="/"] {
-      display: block;
-    }
-
-    visibility: ${props => props.open ? 'visible' : 'hidden'};
-
-    & > #menu-loggedin > ul > li:nth-child(1),
-    & > #menu-loggedin > ul > li:nth-child(2),
-    & > #menu-loggedin > ul > li:nth-child(3) {
-      display: block;
-    };
-
-    & > #menu-loggedout {
-      height: ${props => props.open ? '150px' : '0px'};
-    }
-
-    & > #menu-loggedin {
-      height: ${props => props.open ? '250px' : '0px'};
-    }
-  }
-
-  // Mobile
-  @media(max-width: 620px) {
     & > #menu-loggedout,
     & > #menu-loggedin {
-      position: fixed;
-      width: 100vw;
-      left: 0;
-      margin-right: 0%;
-      overflow: hidden;
+      background-color: var(--WT-Main);
+      width: fit-content;
+      min-width: 236px;
+      border-radius: 8px;
+      padding: 8px 30px;
+      float: right;
+      margin-right: 2%;
+      height: ${props => props.open ? '160px' : '0px'};
+      transition: height 0.3s ease-in-out;
     };
 
-    & > #menu-loggedout {
-      height: ${props => props.open ? '220px' : '0px'};
-    }
+    & > #menu-loggedout > ul,
+    & > #menu-loggedin > ul {
+      list-style: none;
+      height: fit-content;
+      opacity: ${props => props.open ? '1' : '0'};
+      transition: all 0.3s ease-in-out;
+    };
 
-    & > #menu-loggedin {
-      height: ${props => props.open ? '310px' : '0px'};
-    }
+    & > #menu-loggedout > ul > li,
+    & > #menu-loggedin > ul > li {
+      margin: 8px 0px;
+    };
+
+    & > #menu-loggedout > ul > li > a,
+    & > #menu-loggedin > ul > li > a {
+      
+      color: var(--BK-Main-50);
+    };
+
+    & > #menu-loggedout > ul > li > a:hover,
+    & > #menu-loggedin > ul > li > a:hover {
+      color: var(--BK-Main);
+    };
 
     & > #menu-loggedout > ul > li:last-child,
-    & > #menu-loggedin > ul > li:last-child, 
-    & > #menu-loggedin > ul > li:nth-child(1),
-    & > #menu-loggedin > ul > li:nth-child(2),
-    & > #menu-loggedin > ul > li:nth-child(3) {
-      display: block;
-      opacity: 1;
-      color: red;
+    & > #menu-loggedin > ul > li:last-child,
+    & > #menu-loggedin > ul > li:nth-child(1), 
+    & > #menu-loggedin > ul > li:nth-child(2) {
+      display: none;
     };
 
-    & > #menu-loggedout > ul > li:last-child > div,
-    & > #menu-loggedin > ul > li:last-child > div {
-      display: flex;
-      align-items: center;
-    };
+    // Tablet 
+    @media(max-width: 1040px){
+      li > a[href="/"] {
+        display: block;
+      }
 
-    & > #menu-loggedout > ul > li:last-child > div, 
-    & > #menu-loggedin > ul > li:last-child > div {
-      width: 100%;
+      visibility: ${props => props.open ? 'visible' : 'hidden'};
+
+      & > #menu-loggedin > ul > li:nth-child(1),
+      & > #menu-loggedin > ul > li:nth-child(2),
+      & > #menu-loggedin > ul > li:nth-child(3) {
+        display: block;
+      };
+
+      & > #menu-loggedout {
+        height: ${props => props.open ? '150px' : '0px'};
+      }
+
+      & > #menu-loggedin {
+        height: ${props => props.open ? '250px' : '0px'};
+      }
     }
 
-    & > #menu-loggedout > ul > li:last-child > div > input, 
-    & > #menu-loggedin > ul > li:last-child > div > input {
-      width: 95%; 
+    // Mobile
+    @media(max-width: 620px) {
+      & > #menu-loggedout,
+      & > #menu-loggedin {
+        position: fixed;
+        width: 100vw;
+        left: 0;
+        margin-right: 0%;
+        overflow: hidden;
+      };
+
+      & > #menu-loggedout {
+        height: ${props => props.open ? '220px' : '0px'};
+      }
+
+      & > #menu-loggedin {
+        height: ${props => props.open ? '310px' : '0px'};
+      }
+
+      & > #menu-loggedout > ul > li:last-child,
+      & > #menu-loggedin > ul > li:last-child, 
+      & > #menu-loggedin > ul > li:nth-child(1),
+      & > #menu-loggedin > ul > li:nth-child(2),
+      & > #menu-loggedin > ul > li:nth-child(3) {
+        display: block;
+        opacity: 1;
+        color: red;
+      };
+
+      & > #menu-loggedout > ul > li:last-child > div,
+      & > #menu-loggedin > ul > li:last-child > div {
+        display: flex;
+        align-items: center;
+      };
+
+      & > #menu-loggedout > ul > li:last-child > div, 
+      & > #menu-loggedin > ul > li:last-child > div {
+        width: 100%;
+      }
+
+      & > #menu-loggedout > ul > li:last-child > div > input, 
+      & > #menu-loggedin > ul > li:last-child > div > input {
+        width: 95%; 
+      };
     };
-  };
+  }
 `;
 
 export { NavBar, List, ListItem, StyledLink, Button, Menu };

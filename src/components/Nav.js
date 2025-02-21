@@ -77,64 +77,66 @@ const Nav = (props) => {
         </div>
       </NavBar>
       <Menu open={isMenuOpen} onClick={showHideMenu} user={props.user}>
-        {
-          props.user !== undefined ? (
-            <div id="menu-loggedin">
-              <ul>
-                {/* <li>
+        <div id="menu-container">
+          {
+            props.user !== undefined ? (
+              <div id="menu-loggedin">
+                <ul>
+                  {/* <li>
                   <StyledLink to="/about" onClick={showHideMenu}>About</StyledLink>
                 </li> */}
-                <li>
-                  <StyledLink smooth to="/#fresh" onClick={showHideMenu}>Fresh</StyledLink>
-                </li>
-                <li>
-                  <StyledLink smooth to="/#trend" onClick={showHideMenu}>Trends</StyledLink>
-                </li>
-                <li>
-                  <StyledLink to="/new-article" onClick={showHideMenu}>New</StyledLink>
-                </li>
-                <li>
-                  <StyledLink to="/my-articles" onClick={showHideMenu}>My Articles</StyledLink>
-                </li>
-                <li>
-                  <StyledLink to="/bookmarks" onClick={showHideMenu}>Bookmarks</StyledLink>
-                </li>
-                <li>
-                  <StyledLink to="/profile" onClick={showHideMenu}>Profile</StyledLink>
-                </li>
-                <li>
-                  <StyledLink onClick={signout} to="/">Sign Out</StyledLink>
-                </li>
-                <li>
-                  <InputSearch />
-                </li>
-              </ul>
-            </div>
-          ) : (
-            <div id="menu-loggedout">
-              <ul>
-                {/* <li>
+                  <li>
+                    <StyledLink smooth to="/#fresh" onClick={showHideMenu}>Fresh</StyledLink>
+                  </li>
+                  <li>
+                    <StyledLink smooth to="/#trend" onClick={showHideMenu}>Trends</StyledLink>
+                  </li>
+                  <li>
+                    <StyledLink to="/new-article" onClick={showHideMenu}>New</StyledLink>
+                  </li>
+                  <li>
+                    <StyledLink to="/my-articles" onClick={showHideMenu}>My Articles</StyledLink>
+                  </li>
+                  <li>
+                    <StyledLink to="/bookmarks" onClick={showHideMenu}>Bookmarks</StyledLink>
+                  </li>
+                  <li>
+                    <StyledLink to="/profile" onClick={showHideMenu}>Profile</StyledLink>
+                  </li>
+                  <li>
+                    <StyledLink onClick={signout} to="/">Sign Out</StyledLink>
+                  </li>
+                  <li>
+                    <InputSearch />
+                  </li>
+                </ul>
+              </div>
+            ) : (
+              <div id="menu-loggedout">
+                <ul>
+                  {/* <li>
                   <StyledLink to="/about" onClick={showHideMenu}>About</StyledLink>
                 </li> */}
-                <li>
-                  <StyledLink smooth to="/#fresh" onClick={showHideMenu}>Fresh</StyledLink>
-                </li>
-                <li>
-                  <StyledLink smooth to="/#trend" onClick={showHideMenu}>Trends</StyledLink>
-                </li>
-                <li>
-                  <StyledLink to="/signin" onClick={showHideMenu}>Sign In</StyledLink>
-                </li>
-                <li>
-                  <StyledLink to="/signup" onClick={showHideMenu}>Get Started</StyledLink>
-                </li>
-                <li>
-                  <InputSearch />
-                </li>
-              </ul>
-            </div>
-          )
-        }
+                  <li>
+                    <StyledLink smooth to="/#fresh" onClick={showHideMenu}>Fresh</StyledLink>
+                  </li>
+                  <li>
+                    <StyledLink smooth to="/#trend" onClick={showHideMenu}>Trends</StyledLink>
+                  </li>
+                  <li>
+                    <StyledLink to="/signin" onClick={showHideMenu}>Sign In</StyledLink>
+                  </li>
+                  <li>
+                    <StyledLink to="/signup" onClick={showHideMenu}>Get Started</StyledLink>
+                  </li>
+                  <li>
+                    <InputSearch />
+                  </li>
+                </ul>
+              </div>
+            )
+          }
+        </div>
       </Menu>
     </>
   )
