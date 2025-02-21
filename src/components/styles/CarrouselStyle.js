@@ -15,7 +15,7 @@ const FreshSection = styled.section`
 
     &::before,
     &::after {
-      z-index: 2;
+      z-index: 1;
       content: '';
       position: absolute;
       width: 2vw;
@@ -37,10 +37,12 @@ const FreshSection = styled.section`
     & > h2 {
       color: var(--WT-Main);
       border-bottom: 3px solid var(--WT-Main-50);
-      padding: 0 16px 16px;
-      width: 100%;
+      padding: 0 0 16px;
+      max-width: 1200px;
+      width: 95%;
       margin: 0 auto;
-      max-width: 1440px;
+      z-index: 2;
+      position: relative;
     };
 
     & > #carrousel-container {

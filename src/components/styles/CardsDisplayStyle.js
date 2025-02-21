@@ -3,7 +3,9 @@ import styled from "styled-components";
 const CardsDisplayStyle = styled.section`
   height: auto;
   width: 100%;
+  max-width: 1240px;
   position: relative;
+  margin: 0 auto;
 
   & > #cards {
     display: flex;
